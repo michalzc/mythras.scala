@@ -15,12 +15,12 @@ object Mythras extends App {
 
   def preloadTemplates() = {
     val templatePaths = js.Array(
-      "systems/mythras/templates/parts/character-sheet/stats.hbs",
-      "systems/mythras/templates/parts/character-sheet/combat.hbs",
-      "systems/mythras/templates/parts/character-sheet/equipment.hbs",
-      "systems/mythras/templates/parts/character-sheet/magic.hbs",
-      "systems/mythras/templates/parts/character-sheet/notes.hbs",
-      "systems/mythras/templates/parts/character-sheet/attribute-with-skills.hbs",
+      "systems/mythras-scala/templates/parts/character-sheet/stats.hbs",
+      "systems/mythras-scala/templates/parts/character-sheet/combat.hbs",
+      "systems/mythras-scala/templates/parts/character-sheet/equipment.hbs",
+      "systems/mythras-scala/templates/parts/character-sheet/magic.hbs",
+      "systems/mythras-scala/templates/parts/character-sheet/notes.hbs",
+      "systems/mythras-scala/templates/parts/character-sheet/attribute-with-skills.hbs",
     )
 
     loadTemplates(templatePaths)

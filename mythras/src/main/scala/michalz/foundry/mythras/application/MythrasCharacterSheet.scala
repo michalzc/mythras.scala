@@ -12,7 +12,7 @@ import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSExportStatic
 
 class MythrasCharacterSheet(actor: MythrasActor[MythrasCharacterData], options: js.Dictionary[js.Any] = js.Dictionary.empty) extends MythrasBaseSheet(actor, options) {
-  override def template: String = "systems/mythras/templates/character-sheet.hbs"
+  override def template: String = "systems/mythras-scala/templates/character-sheet.hbs"
 
   override def getData(options: js.Object = js.Object()): js.Object = {
     val context = super.getData()
