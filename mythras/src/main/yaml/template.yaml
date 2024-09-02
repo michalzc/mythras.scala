@@ -1,0 +1,81 @@
+---
+Actor:
+  types:
+    - character
+    - npc
+  templates:
+    base:
+      description: ''
+      injury: 0
+  character:
+    templates:
+      - base
+    descriptors:
+      race: ''
+      hand: ''
+      sex: ''
+      height: 0
+      weight: 0
+      hair: ''
+      age: 0
+    attributes:
+      vigour: 1
+      agility: 1
+      stamina: 1
+      intuition: 1
+      intellect: 1
+      luck: 1
+    composites:
+      combat: 0
+      priestcraft: 0
+      witchcraft: 0
+    characteristics:
+      injury: 0
+      aps: 0
+      favourableRounding: false
+  npc:
+    templates:
+      - base
+Item:
+  types:
+    - armour
+    - melee
+    - ranged
+    - item
+    - skill
+    - spell
+  templates:
+    base:
+      description: ''
+    weapon:
+      strike: 0
+    gear:
+      weight: 0
+  armour:
+    templates:
+      - base
+      - weapon
+      - gear
+  melee:
+    templates:
+      - base
+      - weapon
+      - gear
+  ranged:
+    templates:
+      - base
+      - weapon
+      - gear
+  item:
+    templates:
+      - base
+      - gear
+  skill:
+    templates:
+      - base
+    value: 0
+    attribute: ''
+    injury: true
+  spell:
+    templates:
+      - base

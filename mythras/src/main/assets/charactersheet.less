@@ -1,0 +1,112 @@
+.mythras.sheet.character {
+  .sheet-header {
+    column-gap: 1rem;
+
+    .profile-img {
+      flex-grow: 0;
+    }
+
+    .header-fields {
+      gap: 0.5rem;
+      flex-grow: 1;
+      align-items: flex-start;
+
+      .character-name {
+        align-self: stretch;
+      }
+
+      .characteristics {
+        align-items: center;
+        gap: 1rem;
+
+        div {
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  .tab.character-notes > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    row-gap: 1rem;
+
+    .base-info {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr 1fr;
+      column-gap: 1rem;
+      row-gap: 0.1rem;
+      align-items: center;
+    }
+
+    .description {
+      flex-grow: 2;
+
+      & > div {
+        height: 25rem;
+      }
+    }
+  }
+
+  .tab.stats > div, .tab.combat > div, .tab.magic > div  {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.3rem;
+
+    .stat-box {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid grey;
+      padding: 1rem 0.3rem 0.3rem;
+      row-gap: 0.5rem;
+
+      .attribute {
+        font-weight: bold;
+        flex-wrap: nowrap;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .skill {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        column-gap: 1rem;
+
+        .skill-roll {
+          flex-grow: 1;
+        }
+
+        .skill-value {
+          flex-grow: 0;
+        }
+
+        .skill-icons {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          gap: 0.2rem;
+          flex-grow: 0;
+        }
+      }
+
+      div {
+        align-items: center;
+        gap: 1rem;
+
+        label {
+          flex-grow: 2;
+        }
+
+        input {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+}

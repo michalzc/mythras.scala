@@ -1,0 +1,56 @@
+---
+mythras:
+  system:
+    title: Mythras Rules
+  sheets:
+    skill: Skill Sheet
+    character: Character
+    npc: NPC
+
+  labels:
+    name: Name
+    description: Description
+    race: Race/Ethnicity
+    sex: Sex
+    hair: Hair/Eyes
+    weight: Weight
+    height: Height
+    hand: Favoured Hand
+    hand-left: Left
+    hand-right: Right
+    bio: Notes & Biography
+    injury: Injury
+    aps: Spare APs
+    favr: Favourable Rounding
+    attrcomp: Attribute/Composite
+    apply-injury: Apply Injury
+    value: Value
+
+  tooltips:
+    new-skill: New Skill
+    edit: Edit
+    roll: Roll
+    delete: Delete
+    increase: Increase
+    add-luck: Add <i>Luck</i> to modifiers
+
+
+  attributes:
+    vigour: Vigour
+    agility: Agility
+    stamina: Stamina
+    intuition: Intuition
+    intellect: Intellect
+    luck: Luck
+
+  composites:
+    combat: Combat
+    priestcraft: Priestcraft
+    witchcraft: Witchcraft
+
+  tabs:
+    stats: Attributes & Skills
+    combat: Combat
+    equipment: Equipment
+    magic: Priestcraft & Witchery
+    notes: Notes & Background

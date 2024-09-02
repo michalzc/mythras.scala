@@ -1,0 +1,34 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img src="{{document.img}}" class="profile-img" data-edit="img" title="{{document.name}}" height="128" width="128"
+         alt="{{document.name}}" />
+    <div class="header-fields">
+      <div class="item-name">
+        <input type="text" value="{{document.name}}" name="name" placeholder="{{ localize "dominion.labels.name" }}" />
+      </div>
+      <div class="base-data">
+        <div>
+          <label for="attribute">{{ localize "dominion.labels.attrcomp" }}</label>
+          <select name="system.attribute" id="attribute">
+            {{#selectOptions attrscomps selected=system.attribute}}
+              <option value="{{this.key}}">{{this.label}}</option>
+            {{/selectOptions}}
+          </select>
+        </div>
+        <div>
+          <label for="applyInjury">{{ localize "dominion.labels.apply-injury" }}</label>
+          <input type="checkbox" name="system.injury" {{checked system.injury}} />
+        </div>
+        {{#if document.parent}}
+          <div data-name="system.value">
+            <label for="value">{{ localize "dominion.labels.value" }}</label>
+            {{numberInput system.value name="system.value" min=0 step=1 }}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </header>
+  <section class="sheet-body">
+    {{editor document.system.description target="system.description" button=true editable=editable owner=owner }}
+  </section>
+</form>

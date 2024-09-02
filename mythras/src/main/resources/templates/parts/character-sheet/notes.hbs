@@ -1,0 +1,34 @@
+<div>
+  <fieldset class="base-info">
+    <legend>{{ localize "dominion.labels.description" }}</legend>
+
+    <label for="race">{{ localize "dominion.labels.race" }}</label>
+    <input type="text" id="race" name="system.descriptors.race" value="{{system.descriptors.race}}" />
+    <label for="sex">{{ localize "dominion.labels.sex" }}</label>
+    <input type="text" id="sex" name="system.descriptors.sex" value="{{system.descriptors.sex}}" />
+
+    <label for="hair">{{ localize "dominion.labels.hair" }}</label>
+    <input type="text" name="system.descriptors.hair" value="{{system.descriptors.hair}}" id="hair" />
+    <label for="weight"> {{ localize "dominion.labels.weight" }}</label>
+    <input type="number" data-dtype="Number" name="system.descriptors.weight" value="{{system.descriptors.weight}}"
+           id="weight" />
+
+    <label for="hand">{{ localize "dominion.labels.hand" }}</label>
+    <select name="system.descriptors.hand" id="hand">
+      {{#select system.descriptors.hand}}
+        <option value=""></option>
+        <option value="right">{{ localize "dominion.labels.hand-right" }}</option>
+        <option value="left">{{ localize "dominion.labels.hand-left" }}</option>
+      {{/select}}
+    </select>
+    <label for="height">{{ localize "dominion.labels.height" }}</label>
+    <input type="number" data-dtype="Number" id="height" name="system.descriptors.height"
+           value="{{system.descriptors.height}}" />
+  </fieldset>
+
+  <fieldset class="description">
+    <legend>{{ localize "dominion.labels.bio" }}</legend>
+
+    {{editor system.description target="system.description" button=true editable=editable}}
+  </fieldset>
+</div>

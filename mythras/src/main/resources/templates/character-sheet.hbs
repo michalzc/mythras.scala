@@ -1,0 +1,61 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header flexrow">
+    <img src="{{actor.img}}" class="profile-img" data-edit="img" title="{{actor.name}}" height="128" width="128" alt="{{actor.name}}" />
+    <div class="header-fields flexcol">
+      <div class="character-name"><input type="text" value="{{actor.name}}" name="name"
+                                        placeholder="{{ localize "dominion.labels.name" }}" /></div>
+      <div class="characteristics flexrow">
+        <div class="flexrow">
+          <label for="injury">{{ localize "dominion.labels.injury" }}</label>
+          <input type="number" name="system.characteristics.injury" value="{{sheetData.characteristics.injury}}" data-dtype="Number" id="injury" />
+        </div>
+        <div class="flexrow">
+          <label for="aps">{{ localize "dominion.labels.aps" }}</label>
+          <input type="number" name="system.characteristics.aps" value="{{sheetData.characteristics.aps}}" id="aps" data-dtype="Number" />
+        </div>
+        <div class="flexrow">
+          <label for="favr">{{ localize "dominion.labels.favr" }}</label>
+          <input id="favr" type="checkbox" name="system.characteristics.favourableRounding" {{checked sheetData.characteristics.favourableRounding}} />
+        </div>
+        <div class="flexrow">
+          <a class="add-luck" data-tooltip="{{ localize "dominion.tooltips.add-luck" }}">{{ localize "dominion.attributes.luck" }}</a>
+          {{numberInput system.attributes.luck name="system.attributes.luck" step=1 min=1 max=12}}
+        </div>
+      </div>
+    </div>
+  </header>
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="notes">{{ localize "dominion.tabs.notes" }}</a>
+    <a class="item" data-tab="stats">{{ localize "dominion.tabs.stats" }}</a>
+    <a class="item" data-tab="combat">{{ localize "dominion.tabs.combat" }}</a>
+    <a class="item" data-tab="equipment">{{ localize "dominion.tabs.equipment" }}</a>
+    <a class="item" data-tab="magic">{{ localize "dominion.tabs.magic" }}</a>
+  </nav>
+
+
+  <section class="sheet-body">
+
+    <div class="tab character-notes" data-group="primary" data-tab="notes">
+      {{> systems/dominion/templates/parts/character-sheet/notes.hbs }}
+    </div>
+
+    <div class="tab stats" data-group="primary" data-tab="stats">
+      {{> systems/dominion/templates/parts/character-sheet/stats.hbs sheetData }}
+    </div>
+
+    <div class="tab combat" data-group="primary" data-tab="combat">
+      {{> systems/dominion/templates/parts/character-sheet/combat.hbs }}
+    </div>
+
+    <div class="tab magic" data-group="primary" data-tab="magic">
+      {{> systems/dominion/templates/parts/character-sheet/magic.hbs }}
+    </div>
+
+    <div class="tab equipment" data-group="primary" data-tab="equipment">
+      {{> systems/dominion/templates/parts/character-sheet/equipment.hbs }}
+    </div>
+
+
+  </section>
+
+</form>

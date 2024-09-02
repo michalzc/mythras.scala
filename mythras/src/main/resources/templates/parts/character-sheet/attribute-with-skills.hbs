@@ -1,0 +1,19 @@
+<div class="stat-box">
+  <div class="attribute">
+    <a class="attribute-roll" data-attribute-name="{{this.name}}" data-tooltip="{{ localize "dominion.tooltips.roll" }} {{this.name}}">{{this.label}}</a>
+    <input type="number" id="{{this.name}}" name="{{this.fieldName}}" value="{{this.value}}" data-dtype="Number" />
+    <a id="add-skill" data-attribute="{{this.name}}" data-tooltip="{{ localize "dominion.tooltips.new-skill" }}"><i
+      class="fas fa-square-plus"></i></a>
+  </div>
+  {{#each this.skills}}
+    <div class="skill">
+      <a class="skill-roll" data-skill-id="{{this._id}}" data-tooltip="{{ localize "dominion.tooltips.roll" }} {{this.name}}">{{this.name}}</a>
+      <div class="skill-value">{{this.system.value}}</div>
+      <div class="skill-icons">
+        <a class="skill-increase" data-skill-id="{{this._id}}" data-tooltip="{{ localize "dominion.tooltips.increase" }} {{this.name}}"><i class="fas fa-arrow-up-from-arc"></i></a>
+        <a class="skill-edit" data-skill-id="{{this._id}}" data-tooltip="{{ localize "dominion.tooltips.edit" }} {{this.name}}"><i class="fas fa-edit"></i></a>
+        <a class="skill-delete" data-skill-id="{{this._id}}" data-tooltip="{{ localize "dominion.tooltips.delete" }} {{this.name}}"><i class="fas fa-trash"></i></a>
+      </div>
+    </div>
+  {{/each}}
+</div>
