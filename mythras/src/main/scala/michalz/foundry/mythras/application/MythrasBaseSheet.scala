@@ -15,7 +15,7 @@ class MythrasBaseSheet[AD <: MythrasActorData](actor: MythrasActor[AD], options:
 
 object MythrasBaseSheet {
   @JSExportStatic
-  def name: String = "DominionActorSheet"
+  def name: String = "MythrasActorSheet"
 
   @JSExportStatic
   def defaultOptions: ActorSheetOptions = {

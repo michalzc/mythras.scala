@@ -42,7 +42,7 @@ object SheetData {
       .map { case (attr, value) =>
         new AttributeWithSkill(
           name = attr,
-          label = localize(s"dominion.attributes.$attr"),
+          label = localize(s"mythras.attributes.$attr"),
           fieldName = s"system.attributes.$attr",
           value = value,
           skills = js.Array(),

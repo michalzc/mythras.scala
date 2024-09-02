@@ -31,7 +31,7 @@ object Mythras extends App {
     log("Initializing!")
     preloadTemplates()
 
-    Config.Actor.documentClass = js.constructorOf[MythrasActor[? <: MythrasActorData]] // DominionActor.createActor(_, _)
+    Config.Actor.documentClass = js.constructorOf[MythrasActor[? <: MythrasActorData]] // MythrasActor.createActor(_, _)
 
     Actors.unregisterSheet("core", js.constructorOf[ActorSheet[Actor[js.Object]]])
     Actors.registerSheet(

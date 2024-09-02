@@ -5,7 +5,7 @@ ThisBuild / scalaVersion := "3.4.2"
 lazy val `scala-types` = (project in file("scala-types"))
   .enablePlugins(ScalaJSPlugin)
 
-lazy val `dominion` = (project in file("mythras"))
+lazy val `mythras` = (project in file("mythras"))
   .dependsOn(`scala-types`)
   .enablePlugins(SbtLess)
   .enablePlugins(ScalaJSPlugin)
@@ -19,5 +19,5 @@ lazy val `dominion` = (project in file("mythras"))
     ),
   )
 
-lazy val `dominion-system` = (project in file("."))
-  .aggregate(`scala-types`, `dominion`)
+lazy val `mythras-system` = (project in file("."))
+  .aggregate(`scala-types`, `mythras`)

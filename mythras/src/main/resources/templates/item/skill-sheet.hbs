@@ -4,11 +4,11 @@
          alt="{{document.name}}" />
     <div class="header-fields">
       <div class="item-name">
-        <input type="text" value="{{document.name}}" name="name" placeholder="{{ localize "dominion.labels.name" }}" />
+        <input type="text" value="{{document.name}}" name="name" placeholder="{{ localize "mythras.labels.name" }}" />
       </div>
       <div class="base-data">
         <div>
-          <label for="attribute">{{ localize "dominion.labels.attrcomp" }}</label>
+          <label for="attribute">{{ localize "mythras.labels.attrcomp" }}</label>
           <select name="system.attribute" id="attribute">
             {{#selectOptions attrscomps selected=system.attribute}}
               <option value="{{this.key}}">{{this.label}}</option>
@@ -16,12 +16,12 @@
           </select>
         </div>
         <div>
-          <label for="applyInjury">{{ localize "dominion.labels.apply-injury" }}</label>
+          <label for="applyInjury">{{ localize "mythras.labels.apply-injury" }}</label>
           <input type="checkbox" name="system.injury" {{checked system.injury}} />
         </div>
         {{#if document.parent}}
           <div data-name="system.value">
-            <label for="value">{{ localize "dominion.labels.value" }}</label>
+            <label for="value">{{ localize "mythras.labels.value" }}</label>
             {{numberInput system.value name="system.value" min=0 step=1 }}
           </div>
         {{/if}}
