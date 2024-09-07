@@ -12,6 +12,7 @@ lazy val `mythras` = (project in file("mythras"))
   .enablePlugins(YamlProcessorPlugin)
   .settings(
     scalaJSUseMainModuleInitializer        := true,
+    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) },
     Assets / LessKeys.less / includeFilter := "mythras.less",
     libraryDependencies ++= Seq(
       "org.scala-js" %%% "scalajs-dom"   % "2.2.0",

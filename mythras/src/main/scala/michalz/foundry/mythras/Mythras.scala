@@ -1,8 +1,9 @@
 package michalz.foundry.mythras
 
 import foundry.client.GlobalFunctions.loadTemplates
-import foundry.client.{Actor, ActorSheet, ActorSheetParams, Actors, Hooks}
+import foundry.client.*
 import michalz.foundry.client.Config
+import michalz.foundry.client.MythrasAddons.registerDataModels
 import michalz.foundry.mythras.application.MythrasCharacterSheet
 import michalz.foundry.mythras.document.actor.MythrasActor
 import michalz.foundry.mythras.document.actor.data.MythrasActorData
@@ -25,6 +26,7 @@ object Mythras extends App {
   val init: js.Function0[Unit] = { () =>
     log("Initializing!")
     preloadTemplates()
+    registerDataModels()
 
     Config.Actor.documentClass = js.constructorOf[MythrasActor[? <: MythrasActorData]] // MythrasActor.createActor(_, _)
 

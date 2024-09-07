@@ -19,7 +19,7 @@ class MythrasCharacterSheet(actor: MythrasActor[MythrasCharacterData], options: 
 
     val sheetData = new CharacterSheetData(
 //      system = actor.system,
-      sheetData = SheetData.fromSystem(actor.system),
+//      sheetData = SheetData.fromSystem(actor.system),
     )
 
     logObject(mergeObject(context, sheetData), "Character Sheet Context Data")

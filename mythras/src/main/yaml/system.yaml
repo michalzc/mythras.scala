@@ -13,6 +13,19 @@ esmodules:
   - modules/main.js
 styles:
   - "./css/mythras.css"
+documentTypes:
+  Actor:
+      character: {}
+      npc: {}
+  Item:
+      armour: {}
+      melee: {}
+      ranged: {}
+      equipment: {}
+      skill: {}
+      spell: {}
+      hitLocation: {}
+
 languages:
   - lang: en
     name: English
