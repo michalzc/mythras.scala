@@ -4,56 +4,20 @@
     <div class="header-fields flexcol">
       <div class="character-name"><input type="text" value="{{actor.name}}" name="name"
                                         placeholder="{{ localize "mythras.labels.name" }}" /></div>
-      <div class="characteristics flexrow">
-        <div class="flexrow">
-          <label for="injury">{{ localize "mythras.labels.injury" }}</label>
-          <input type="number" name="system.characteristics.injury" value="{{sheetData.characteristics.injury}}" data-dtype="Number" id="injury" />
-        </div>
-        <div class="flexrow">
-          <label for="aps">{{ localize "mythras.labels.aps" }}</label>
-          <input type="number" name="system.characteristics.aps" value="{{sheetData.characteristics.aps}}" id="aps" data-dtype="Number" />
-        </div>
-        <div class="flexrow">
-          <label for="favr">{{ localize "mythras.labels.favr" }}</label>
-          <input id="favr" type="checkbox" name="system.characteristics.favourableRounding" {{checked sheetData.characteristics.favourableRounding}} />
-        </div>
-        <div class="flexrow">
-          <a class="add-luck" data-tooltip="{{ localize "mythras.tooltips.add-luck" }}">{{ localize "mythras.attributes.luck" }}</a>
-          {{numberInput system.attributes.luck name="system.attributes.luck" step=1 min=1 max=12}}
-        </div>
-      </div>
     </div>
   </header>
   <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="notes">{{ localize "mythras.tabs.notes" }}</a>
     <a class="item" data-tab="stats">{{ localize "mythras.tabs.stats" }}</a>
-    <a class="item" data-tab="combat">{{ localize "mythras.tabs.combat" }}</a>
-    <a class="item" data-tab="equipment">{{ localize "mythras.tabs.equipment" }}</a>
-    <a class="item" data-tab="magic">{{ localize "mythras.tabs.magic" }}</a>
+
   </nav>
 
 
   <section class="sheet-body">
 
-    <div class="tab character-notes" data-group="primary" data-tab="notes">
-      {{> systems/mythras-scala/templates/parts/character-sheet/notes.hbs }}
-    </div>
-
     <div class="tab stats" data-group="primary" data-tab="stats">
       {{> systems/mythras-scala/templates/parts/character-sheet/stats.hbs sheetData }}
     </div>
 
-    <div class="tab combat" data-group="primary" data-tab="combat">
-      {{> systems/mythras-scala/templates/parts/character-sheet/combat.hbs }}
-    </div>
-
-    <div class="tab magic" data-group="primary" data-tab="magic">
-      {{> systems/mythras-scala/templates/parts/character-sheet/magic.hbs }}
-    </div>
-
-    <div class="tab equipment" data-group="primary" data-tab="equipment">
-      {{> systems/mythras-scala/templates/parts/character-sheet/equipment.hbs }}
-    </div>
 
 
   </section>
