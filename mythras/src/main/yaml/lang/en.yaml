@@ -15,3 +15,7 @@ mythras:
   tabs:
     stats: Attributes & Skills
 
+TYPES:
+  Actor:
+    character: Character
+    npc: "NPC/Monster"

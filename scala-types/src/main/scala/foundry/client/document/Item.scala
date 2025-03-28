@@ -1,4 +1,4 @@
-package foundry.client
+package foundry.client.document
 
 import foundry.documents.{ActorData, ItemData}
 

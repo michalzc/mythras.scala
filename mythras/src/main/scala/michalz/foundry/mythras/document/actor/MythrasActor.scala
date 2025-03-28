@@ -1,8 +1,10 @@
 package michalz.foundry.mythras.document.actor
 
-import foundry.client.Actor
+import foundry.client.document.Actor
 import foundry.documents.ActorData
 import michalz.foundry.mythras.document.actor.data.MythrasActorData
+import michalz.foundry.mythras.utils
+import michalz.foundry.mythras.utils.log
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSExportStatic, JSExportTopLevel}

@@ -1,4 +1,5 @@
-package foundry.client
+package foundry.client.apps
+
 
 import scala.scalajs.js
 
