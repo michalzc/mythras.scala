@@ -1,7 +1,7 @@
 package michalz.foundry.mythras.application
 
 import foundry.client.FoundryUtils.mergeObject
-import foundry.client.apps.data.{ActorSheetData, ApplicationOptions}
+import foundry.client.apps.data.ApplicationOptions
 import foundry.client.apps.{ActorSheetOptions, TabDef}
 import michalz.foundry.mythras.document.actor.MythrasActor
 import michalz.foundry.mythras.document.actor.data.MythrasNPCData
@@ -34,8 +34,8 @@ object MythrasNPCSheet:
   @JSExportStatic
   def defaultOptions: ActorSheetOptions =
     val defaultOptions = MythrasBaseSheet.defaultOptions
-    val newOptions = new ActorSheetOptions {
-      override val tabs = js.Array(
+    val newOptions: ActorSheetOptions = new ActorSheetOptions {
+      override val tabs: js.Array[TabDef] = js.Array(
         new TabDef {
           override val navSelector: String     = ".sheet-tabs"
           override val contentSelector: String = ".sheet-body"

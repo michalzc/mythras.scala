@@ -1,9 +1,8 @@
 package michalz.foundry.mythras.init
 
+import foundry.client.Actors
 import foundry.client.GlobalFunctions.loadTemplates
 import foundry.client.apps.{ActorSheet, ActorSheetParams}
-import foundry.client.document.Actor
-import foundry.client.Actors
 import michalz.foundry.client.Config
 import michalz.foundry.client.MythrasAddons.registerDataModels
 import michalz.foundry.mythras.application.{MythrasCharacterSheet, MythrasNPCSheet}

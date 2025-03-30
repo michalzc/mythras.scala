@@ -1,4 +1,4 @@
-package foundry.documents
+package foundry.client.document
 
 import scala.scalajs.js
 

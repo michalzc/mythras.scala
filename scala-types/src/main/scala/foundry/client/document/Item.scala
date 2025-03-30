@@ -1,7 +1,5 @@
 package foundry.client.document
 
-import foundry.documents.{ActorData, ItemData}
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSGlobal, JSName}
 import scala.scalajs.js.|

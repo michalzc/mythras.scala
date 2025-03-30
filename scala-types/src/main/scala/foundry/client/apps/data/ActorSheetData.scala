@@ -1,7 +1,6 @@
 package foundry.client.apps.data
 
-import foundry.client.document.Actor
-import foundry.documents.ActorData
+import foundry.client.document.{Actor, ActorData}
 
 import scala.scalajs.js
 

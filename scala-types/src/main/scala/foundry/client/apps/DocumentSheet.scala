@@ -1,7 +1,7 @@
 package foundry.client.apps
 
 import foundry.client.apps.data.SheetData
-import foundry.documents.Document
+import foundry.client.document.Document
 
 import scala.scalajs.js
 

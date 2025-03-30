@@ -17,16 +17,12 @@ class MythrasCharacterSheet(actor: MythrasActor[MythrasCharacterData with js.Obj
   override def template: String = "systems/mythras-scala/templates/character-sheet.hbs"
 
   override def getData(options: js.Object = js.Object()): DataType =
-    val context = super.getData(options)
-    val sheetData = new CharacterSheetData(
-//            system = actor.system,
-      //      sheetData = SheetData.fromSystem(actor.system),
-    )
-    val system: MythrasCharacterData & js.Object = actor.system
-    log("Actor system", actor.system)
-    log("Charactersitics", system.characteristics)
-    logObject(mergeObject(context, sheetData), "Character Sheet Context Data")
+    val context   = super.getData(options)
+    val sheetData = new CharacterSheetData()
 
+    log("Actor system", actor.system)
+    actor.system.foreach(system => log("Charactersitics", system.characteristics))
+    logObject(mergeObject(context, sheetData), "Character Sheet Context Data")
 
 object MythrasCharacterSheet:
   @JSExportStatic
@@ -35,8 +31,8 @@ object MythrasCharacterSheet:
   @JSExportStatic
   def defaultOptions: ActorSheetOptions =
     val defaultOptions = MythrasBaseSheet.defaultOptions
-    val newOptions = new ActorSheetOptions {
-      override val tabs = js.Array(
+    val newOptions: ActorSheetOptions = new ActorSheetOptions {
+      override val tabs: js.Array[TabDef] = js.Array(
         new TabDef {
           override val navSelector: String     = ".sheet-tabs"
           override val contentSelector: String = ".sheet-body"

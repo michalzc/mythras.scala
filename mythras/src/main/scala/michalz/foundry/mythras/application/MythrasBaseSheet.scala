@@ -4,7 +4,6 @@ import foundry.client.FoundryUtils.mergeObject
 import foundry.client.apps.data.ApplicationOptions
 import foundry.client.apps.{ActorSheet, ActorSheetOptions}
 import michalz.foundry.mythras.document.actor.MythrasActor
-import michalz.foundry.mythras.document.actor.data.MythrasActorSystemData
 
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters.*
@@ -19,8 +18,8 @@ object MythrasBaseSheet {
 
   @JSExportStatic
   def defaultOptions: ActorSheetOptions = {
-    val newOptions = new ActorSheetOptions {
-      override val classes = List("mythras", "actor", "sheet").toJSArray
+    val newOptions: ActorSheetOptions = new ActorSheetOptions {
+      override val classes: js.Array[String] = List("mythras", "actor", "sheet").toJSArray
       override val width   = 1024
       override val height  = 768
     }

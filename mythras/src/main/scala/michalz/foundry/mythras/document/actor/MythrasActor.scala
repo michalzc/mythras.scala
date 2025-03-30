@@ -1,7 +1,6 @@
 package michalz.foundry.mythras.document.actor
 
-import foundry.client.document.Actor
-import foundry.documents.ActorData
+import foundry.client.document.{Actor, ActorData}
 import michalz.foundry.mythras.document.actor.MythrasActor.SystemData
 import michalz.foundry.mythras.document.actor.data.MythrasActorSystemData
 import michalz.foundry.mythras.utils.log
@@ -11,7 +10,7 @@ import scala.scalajs.js.annotation.{JSExportStatic, JSExportTopLevel}
 
 @JSExportTopLevel("MythrasActor")
 class MythrasActor[SD <: SystemData](data: ActorData[SD], context: js.Object) extends Actor[SD](data, context):
-  log(s"Creating new actor ${data.name}")
+  log(s"Creating new actor ${data.name}", data)
 
 object MythrasActor {
 

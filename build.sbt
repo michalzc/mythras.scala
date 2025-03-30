@@ -11,6 +11,10 @@ lazy val `mythras` = (project in file("mythras"))
   .enablePlugins(ScalaJSPlugin)
   .enablePlugins(YamlProcessorPlugin)
   .settings(
+    scalacOptions ++= Seq(
+      "-Wunused:all",
+      "-Werror"
+    ),
     scalaJSUseMainModuleInitializer := true,
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) },
     Assets / LessKeys.less / includeFilter := "mythras.less",
