@@ -11,9 +11,9 @@ import scala.scalajs.js
 import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSExportStatic
 
-class MythrasNPCSheet(actor: MythrasActor[MythrasNPCData], options: ApplicationOptions)
-    extends MythrasBaseSheet[MythrasNPCData](actor, options):
-  type SheetData = ActorSheetData[MythrasNPCData, MythrasActor[MythrasNPCData]]
+class MythrasNPCSheet(actor: MythrasActor[MythrasNPCData with js.Object], options: ApplicationOptions)
+    extends MythrasBaseSheet(actor, options):
+//  type SheetData = ActorSheetData[MythrasNPCData, MythrasActor[MythrasNPCData]]
 
   override def template: String = "systems/mythras-scala/templates/npc-sheet.hbs"
 

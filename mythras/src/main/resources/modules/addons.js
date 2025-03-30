@@ -1,4 +1,4 @@
-import {CharacterDataModel, NpcDataModel} from './datamodel/character-data-model.js'
+import {CharacterDataModel, NpcDataModel} from './datamodel/actor-data-model.js'
 
 /**
  * Some addons that can't be implemented in scalajs

@@ -4,13 +4,13 @@ import foundry.client.FoundryUtils.mergeObject
 import foundry.client.apps.data.ApplicationOptions
 import foundry.client.apps.{ActorSheet, ActorSheetOptions}
 import michalz.foundry.mythras.document.actor.MythrasActor
-import michalz.foundry.mythras.document.actor.data.MythrasActorData
+import michalz.foundry.mythras.document.actor.data.MythrasActorSystemData
 
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters.*
 import scala.scalajs.js.annotation.JSExportStatic
 
-class MythrasBaseSheet[AD <: MythrasActorData](actor: MythrasActor[AD], options: ApplicationOptions)
+class MythrasBaseSheet[AD <: MythrasActor.SystemData](actor: MythrasActor[AD], options: ApplicationOptions)
     extends ActorSheet[AD, MythrasActor[AD]](actor, options)
 
 object MythrasBaseSheet {

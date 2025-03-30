@@ -6,24 +6,27 @@ import foundry.client.apps.{ActorSheetOptions, TabDef}
 import michalz.foundry.mythras.application.data.CharacterSheetData
 import michalz.foundry.mythras.document.actor.MythrasActor
 import michalz.foundry.mythras.document.actor.data.MythrasCharacterData
-import michalz.foundry.mythras.utils.logObject
+import michalz.foundry.mythras.utils.{log, logObject}
 
 import scala.scalajs.js
 import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSExportStatic
 
-class MythrasCharacterSheet(actor: MythrasActor[MythrasCharacterData], options: ApplicationOptions)
+class MythrasCharacterSheet(actor: MythrasActor[MythrasCharacterData with js.Object], options: ApplicationOptions)
     extends MythrasBaseSheet(actor, options):
   override def template: String = "systems/mythras-scala/templates/character-sheet.hbs"
 
   override def getData(options: js.Object = js.Object()): DataType =
     val context = super.getData(options)
     val sheetData = new CharacterSheetData(
-      //      system = actor.system,
+//            system = actor.system,
       //      sheetData = SheetData.fromSystem(actor.system),
     )
-
+    val system: MythrasCharacterData & js.Object = actor.system
+    log("Actor system", actor.system)
+    log("Charactersitics", system.characteristics)
     logObject(mergeObject(context, sheetData), "Character Sheet Context Data")
+
 
 object MythrasCharacterSheet:
   @JSExportStatic
