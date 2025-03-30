@@ -61,11 +61,11 @@ object FoundryScalaJsPlugin extends AutoPlugin {
     val lessOutDir = (Assets / less / resourceManaged).value
     val jsonOutDir = jsonOutputDir.value
 
-    //more soon
-    val generatedJsonFiles = transformPaths(Set(jsonOutDir), output.value)( generateJson.value )
-    val lessFiles     = transformPaths(Set(lessOutDir), output.value / "css")((Assets / less).value)
-    val jsFiles       = transformPaths(Set(jsOutDir), output.value / "modules")(scripts)
-    val resourceFiles = transformPaths(resourceDirectories.value.toSet, output.value)(resources.value)
+    // more soon
+    val generatedJsonFiles = transformPaths(Set(jsonOutDir), output.value)(generateJson.value)
+    val lessFiles          = transformPaths(Set(lessOutDir), output.value / "css")((Assets / less).value)
+    val jsFiles            = transformPaths(Set(jsOutDir), output.value / "modules")(scripts)
+    val resourceFiles      = transformPaths(resourceDirectories.value.toSet, output.value)(resources.value)
 
     val mappedFiles = generatedJsonFiles ++: lessFiles ++: jsFiles ++: resourceFiles
     IO.copy(mappedFiles)

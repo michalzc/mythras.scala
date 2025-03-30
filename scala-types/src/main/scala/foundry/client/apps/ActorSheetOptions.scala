@@ -1,6 +1,5 @@
 package foundry.client.apps
 
-
 import scala.scalajs.js
 
 trait ActorSheetOptions extends js.Object {

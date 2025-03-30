@@ -10,7 +10,8 @@ import scala.scalajs.js
 import scala.scalajs.js.JSConverters.*
 import scala.scalajs.js.annotation.JSExportStatic
 
-class MythrasBaseSheet[AD <: MythrasActorData](actor: MythrasActor[AD], options: ApplicationOptions) extends ActorSheet[AD, MythrasActor[AD]](actor, options)
+class MythrasBaseSheet[AD <: MythrasActorData](actor: MythrasActor[AD], options: ApplicationOptions)
+    extends ActorSheet[AD, MythrasActor[AD]](actor, options)
 
 object MythrasBaseSheet {
   @JSExportStatic

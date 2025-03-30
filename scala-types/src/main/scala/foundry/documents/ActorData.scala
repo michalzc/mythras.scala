@@ -6,10 +6,10 @@ import scala.scalajs.js.|
 
 @js.native
 trait ActorData[SystemData <: js.Object] extends js.Object {
-  val _id: String = js.native
+  val _id: String  = js.native
   var name: String = js.native
   @JSName("type")
-  val `type`: String = js.native
-  val system: SystemData = js.native
+  val `type`: String        = js.native
+  val system: SystemData    = js.native
   val folder: String | Null = js.native
 }

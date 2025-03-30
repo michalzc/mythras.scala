@@ -11,7 +11,8 @@ import scala.scalajs.js
 import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSExportStatic
 
-class MythrasNPCSheet(actor: MythrasActor[MythrasNPCData], options: ApplicationOptions) extends MythrasBaseSheet[MythrasNPCData](actor, options):
+class MythrasNPCSheet(actor: MythrasActor[MythrasNPCData], options: ApplicationOptions)
+    extends MythrasBaseSheet[MythrasNPCData](actor, options):
   type SheetData = ActorSheetData[MythrasNPCData, MythrasActor[MythrasNPCData]]
 
   override def template: String = "systems/mythras-scala/templates/npc-sheet.hbs"
@@ -25,7 +26,6 @@ class MythrasNPCSheet(actor: MythrasActor[MythrasNPCData], options: ApplicationO
 
     context
 
-
 object MythrasNPCSheet:
 
   @JSExportStatic
@@ -37,9 +37,9 @@ object MythrasNPCSheet:
     val newOptions = new ActorSheetOptions {
       override val tabs = js.Array(
         new TabDef {
-          override val navSelector: String = ".sheet-tabs"
+          override val navSelector: String     = ".sheet-tabs"
           override val contentSelector: String = ".sheet-body"
-          override val initial: String = ".notes"
+          override val initial: String         = ".notes"
         },
       )
       override val classes: UndefOr[js.Array[String]] = js.Array("mythras", "sheet", "actor", "npc")

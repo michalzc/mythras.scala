@@ -28,7 +28,7 @@ def init(): Unit =
 
   Config.Actor.documentClass = js.constructorOf[MythrasActor[? <: MythrasActorData]] // MythrasActor.createActor(_, _)
 
-  Actors.unregisterSheet("core", js.constructorOf[ActorSheet[?,?]])
+  Actors.unregisterSheet("core", js.constructorOf[ActorSheet[?, ?]])
   Actors.registerSheet(
     "mythras",
     js.constructorOf[MythrasCharacterSheet],
@@ -37,6 +37,6 @@ def init(): Unit =
   Actors.registerSheet(
     "mythras",
     js.constructorOf[MythrasNPCSheet],
-    ActorSheetParams(label = "mythras.sheets.npc", types = js.Array("npc"), makeDefault = true)
+    ActorSheetParams(label = "mythras.sheets.npc", types = js.Array("npc"), makeDefault = true),
   )
   log("System initialized!")

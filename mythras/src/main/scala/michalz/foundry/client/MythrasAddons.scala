@@ -5,7 +5,7 @@ import scala.scalajs.js.annotation.JSImport
 
 @js.native
 @JSImport("./addons.js", "MythrasAddons")
-object MythrasAddons extends js.Any{
+object MythrasAddons extends js.Any {
 
   def registerDataModels(): Unit = js.native
 }
