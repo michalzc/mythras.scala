@@ -5,14 +5,14 @@ import foundry.client.apps.data.ApplicationOptions
 import foundry.client.apps.{ActorSheetOptions, TabDef}
 import michalz.foundry.mythras.application.data.CharacterSheetData
 import michalz.foundry.mythras.document.actor.MythrasActor
-import michalz.foundry.mythras.document.actor.data.MythrasCharacterData
+import michalz.foundry.mythras.document.actor.data.MythrasCharacterDataModel
 import michalz.foundry.mythras.utils.{log, logObject}
 
 import scala.scalajs.js
 import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSExportStatic
 
-class MythrasCharacterSheet(actor: MythrasActor[MythrasCharacterData with js.Object], options: ApplicationOptions)
+class MythrasCharacterSheet(actor: MythrasActor[MythrasCharacterDataModel], options: ApplicationOptions)
     extends MythrasBaseSheet(actor, options):
   override def template: String = "systems/mythras-scala/templates/character-sheet.hbs"
 

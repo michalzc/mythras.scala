@@ -1,4 +1,4 @@
 package michalz.foundry.mythras.document.actor.data
 
-trait MythrasNPCData extends MythrasActorSystemData:
+trait MythrasNPCDataModel extends MythrasActorDataModel:
   def description: Option[String]

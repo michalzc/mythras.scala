@@ -8,7 +8,7 @@ import scala.scalajs.js.|
 trait Document[SystemData <: js.Object] extends js.Object {
   @JSName("type")
   val `type`: String                 = js.native
-  val _id: String                    = js.native
+  val id: String                     = js.native
   var name: String                   = js.native
   val system: js.UndefOr[SystemData] = js.native
   val folder: js.UndefOr[String]     = js.native

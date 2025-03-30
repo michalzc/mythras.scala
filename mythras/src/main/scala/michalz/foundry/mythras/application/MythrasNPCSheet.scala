@@ -4,14 +4,14 @@ import foundry.client.FoundryUtils.mergeObject
 import foundry.client.apps.data.ApplicationOptions
 import foundry.client.apps.{ActorSheetOptions, TabDef}
 import michalz.foundry.mythras.document.actor.MythrasActor
-import michalz.foundry.mythras.document.actor.data.MythrasNPCData
+import michalz.foundry.mythras.document.actor.data.MythrasNPCDataModel
 import michalz.foundry.mythras.utils.log
 
 import scala.scalajs.js
 import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSExportStatic
 
-class MythrasNPCSheet(actor: MythrasActor[MythrasNPCData with js.Object], options: ApplicationOptions)
+class MythrasNPCSheet(actor: MythrasActor[MythrasNPCDataModel with js.Object], options: ApplicationOptions)
     extends MythrasBaseSheet(actor, options):
 //  type SheetData = ActorSheetData[MythrasNPCData, MythrasActor[MythrasNPCData]]
 
