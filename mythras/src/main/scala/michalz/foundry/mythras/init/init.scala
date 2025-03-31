@@ -8,6 +8,7 @@ import michalz.foundry.client.MythrasAddons.registerDataModels
 import michalz.foundry.mythras.application.{MythrasCharacterSheet, MythrasNPCSheet}
 import michalz.foundry.mythras.document.actor.MythrasActor
 import michalz.foundry.mythras.document.actor.data.MythrasActorDataModel
+import michalz.foundry.mythras.document.item.MythrasItem
 import michalz.foundry.mythras.utils.log
 
 import scala.scalajs.js
@@ -25,7 +26,8 @@ def init(): Unit =
   preloadTemplates()
   registerDataModels()
 
-  Config.Actor.documentClass = js.constructorOf[MythrasActor[? <: MythrasActorDataModel]] // MythrasActor.createActor(_, _)
+  Config.Actor.documentClass = js.constructorOf[MythrasActor[? <: MythrasActorDataModel]]
+  Config.Item.documentClass = js.constructorOf[MythrasItem[? <: js.Object]]
 
   Actors.unregisterSheet("core", js.constructorOf[ActorSheet[?, ?]])
   Actors.registerSheet(

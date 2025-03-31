@@ -11,11 +11,18 @@ mythras:
     name: Name
     description: Description
 
-
   tabs:
     stats: Attributes & Skills
 
 TYPES:
   Actor:
     character: Character
-    npc: "NPC/Monster"
+    npc: NPC/Monster
+  Item:
+    armour: Armour
+    melee: Melee Weapon
+    ranged: Ranged Weapon
+    equipment: Equipment
+    skill: Skill
+    spell: Spell
+    hitLocation: Hit Location

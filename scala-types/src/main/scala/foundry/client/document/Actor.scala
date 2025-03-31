@@ -5,4 +5,7 @@ import scala.scalajs.js.annotation.JSGlobal
 
 @js.native
 @JSGlobal
-class Actor[SystemData <: js.Object](data: ActorData[SystemData], context: js.Object) extends Document[SystemData]
+class Actor[SystemData <: js.Object](data: ActorData[SystemData], context: js.Object) extends Document[SystemData] with ClientDocument:
+  def items: js.Iterable[Item[?]] = js.native
+  def getRollData(): js.Object    = js.native
+  def applyActiveEffects(): Unit  = js.native

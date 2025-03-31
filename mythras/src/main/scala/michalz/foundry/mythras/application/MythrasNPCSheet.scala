@@ -1,8 +1,8 @@
 package michalz.foundry.mythras.application
 
 import foundry.client.FoundryUtils.mergeObject
+import foundry.client.apps.ActorSheetOptions
 import foundry.client.apps.data.ApplicationOptions
-import foundry.client.apps.{ActorSheetOptions, TabDef}
 import michalz.foundry.mythras.document.actor.MythrasActor
 import michalz.foundry.mythras.document.actor.data.MythrasNPCDataModel
 import michalz.foundry.mythras.utils.log
@@ -35,13 +35,6 @@ object MythrasNPCSheet:
   def defaultOptions: ActorSheetOptions =
     val defaultOptions = MythrasBaseSheet.defaultOptions
     val newOptions: ActorSheetOptions = new ActorSheetOptions {
-      override val tabs: js.Array[TabDef] = js.Array(
-        new TabDef {
-          override val navSelector: String     = ".sheet-tabs"
-          override val contentSelector: String = ".sheet-body"
-          override val initial: String         = ".notes"
-        },
-      )
       override val classes: UndefOr[js.Array[String]] = js.Array("mythras", "sheet", "actor", "npc")
     }
 

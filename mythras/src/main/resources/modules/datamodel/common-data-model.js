@@ -2,10 +2,18 @@ const fields = foundry.data.fields;
 
 export function createFieldWithMod(required = false) {
     const fieldOptions = {integer: true, min: 0, initial: 0, required: true}
-    return new fields.SchemaField({
+    const schemaField = new fields.SchemaField({
         base: new fields.NumberField(fieldOptions),
         mod: new fields.NumberField(fieldOptions)
-    }, {required: required})
+    }, {required: required});
+
+    Object.defineProperty(schemaField, 'value', {
+        get: function() {
+            return this.base + this.mod;
+        }
+    })
+
+    return schemaField
 }
 
 export function createCounterWithMod(required = false) {
