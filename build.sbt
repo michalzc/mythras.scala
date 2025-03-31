@@ -10,6 +10,7 @@ lazy val `mythras` = (project in file("mythras"))
   .enablePlugins(SbtLess)
   .enablePlugins(ScalaJSPlugin)
   .enablePlugins(YamlProcessorPlugin)
+  .enablePlugins(FoundryScalaJsPlugin)
   .settings(
     scalacOptions ++= Seq(
       "-Wunused:all",

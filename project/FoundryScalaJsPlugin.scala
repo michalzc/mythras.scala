@@ -12,7 +12,7 @@ import sbt.{Def, *}
 object FoundryScalaJsPlugin extends AutoPlugin {
 
   override def requires = ScalaJSPlugin && SbtLess && YamlProcessorPlugin
-  override def trigger  = allRequirements
+  override def trigger  = NoTrigger
 
   object autoImport {
     lazy val devDist          = taskKey[Seq[(File, File)]]("Prepare local version of system to include in FoundryVTT")
@@ -27,7 +27,12 @@ object FoundryScalaJsPlugin extends AutoPlugin {
 
   override def projectSettings: Seq[Def.Setting[_]] = {
 
-    inConfig(Compile)(
+    inConfig(Assets)(
+      Seq(
+        sourceDirectory := (Compile / less / sourceDirectory).value / "less",
+        less / includeFilter   := "*.less",
+      ),
+    ) ++ inConfig(Compile)(
       Seq(
         devDist          := copyFiles(fastLinkJS, devDistOutput).value,
         devDistOutput    := target.value / s"${moduleName.value}-dev",
@@ -64,8 +69,8 @@ object FoundryScalaJsPlugin extends AutoPlugin {
     // more soon
     val generatedJsonFiles = transformPaths(Set(jsonOutDir), output.value)(generateJson.value)
     val lessFiles          = transformPaths(Set(lessOutDir), output.value / "css")((Assets / less).value)
-    val jsFiles            = transformPaths(Set(jsOutDir), output.value / "modules")(scripts)
-    val resourceFiles      = transformPaths(resourceDirectories.value.toSet, output.value)(resources.value)
+    val jsFiles       = transformPaths(Set(jsOutDir), output.value / "modules")(scripts)
+    val resourceFiles = transformPaths(resourceDirectories.value.toSet, output.value)((Compile / resources).value)
 
     val mappedFiles = generatedJsonFiles ++: lessFiles ++: jsFiles ++: resourceFiles
     IO.copy(mappedFiles)

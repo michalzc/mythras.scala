@@ -19,7 +19,7 @@ class MythrasCharacterSheet(actor: MythrasActor[MythrasCharacterDataModel], opti
 
   override def _getHeaderButtons(): js.Array[js.Object] =
     val buttons = super._getHeaderButtons().toList
-    (ApplicationHeaderButton("Characer", "character", "", js.Any.fromFunction0(showCharacterDialog)) :: buttons).toJSArray
+    (ApplicationHeaderButton("Characer", "character", "ti ti-user-filled", js.Any.fromFunction0(showCharacterDialog)) :: buttons).toJSArray
 
 
   private def showCharacterDialog(): Unit =
