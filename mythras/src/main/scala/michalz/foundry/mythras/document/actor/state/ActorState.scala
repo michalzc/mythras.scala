@@ -7,6 +7,7 @@ import michalz.foundry.mythras.document.item.MythrasItem
 import michalz.foundry.mythras.document.state.MythrasDocumentState
 
 import scala.scalajs.js
+import scala.scalajs.js.Dictionary
 import scala.scalajs.js.JSConverters.*
 
 class ActorState[DataModel <: MythrasActorDataModel](val actor: MythrasActor[DataModel]) extends MythrasDocumentState(actor):
@@ -14,5 +15,5 @@ class ActorState[DataModel <: MythrasActorDataModel](val actor: MythrasActor[Dat
   def getActor(): MythrasActor[DataModel] = actor
   lazy val items: js.Array[Item[?]] = js.Array.from(actor.items).map(_.asInstanceOf[MythrasItem[?]])
   private lazy val itemMap: Map[String, js.Array[Item[?]]] = items.groupBy(_.`type`)
-  lazy val itemsDict = itemMap.toJSDictionary
+  lazy val itemsDict: Dictionary[js.Array[Item[?]]] = itemMap.toJSDictionary
 

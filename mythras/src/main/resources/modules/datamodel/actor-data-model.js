@@ -2,6 +2,21 @@ import {createAttributes, createCharacteristics, createCounterWithMod} from './c
 
 const fields = foundry.data.fields;
 
+function createCharacterProfile() {
+  return new fields.SchemaField({
+    biography: new fields.HTMLField(),
+    notes: new fields.HTMLField(),
+    race: new fields.StringField(),
+    homeland: new fields.StringField(),
+    career: new fields.StringField(),
+    socialClass: new fields.StringField(),
+    age: new fields.NumberField({integer: true, min: 0}),
+    gender: new fields.StringField(),
+    frame: new fields.StringField(),
+    height: new fields.NumberField({integer: true, min: 0}),
+    weight: new fields.NumberField({integer: true, min: 0}),
+  }, {required: true})
+}
 
 export class CharacterDataModel extends foundry.abstract.DataModel {
 
@@ -9,8 +24,7 @@ export class CharacterDataModel extends foundry.abstract.DataModel {
     return {
       characteristics: createCharacteristics(),
       attributes: createAttributes(),
-      biography: new fields.HTMLField(),
-      notes: new fields.HTMLField(),
+      profile: createCharacterProfile(),
       cults: new fields.ArrayField( new fields.SchemaField({
         name: new fields.StringField({required: true}),
         description: new fields.HTMLField({required: false}),

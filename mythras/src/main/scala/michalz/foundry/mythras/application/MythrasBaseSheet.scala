@@ -5,6 +5,7 @@ import foundry.client.apps.data.ApplicationOptions
 import foundry.client.apps.{ActorSheet, ActorSheetOptions}
 import michalz.foundry.mythras.document.actor.MythrasActor
 import michalz.foundry.mythras.document.actor.data.MythrasActorDataModel
+import michalz.foundry.mythras.document.actor.state.ActorState
 import michalz.foundry.mythras.utils
 
 import scala.scalajs.js
@@ -16,7 +17,7 @@ class MythrasBaseSheet[DataModel <: MythrasActorDataModel](actor: MythrasActor[D
   override def getData(options: js.Object): DataType = {
     val context = super.getData(options)
     utils.logObject(mergeObject(context, new js.Object{
-      val state = actor.getState
+      val state: ActorState[? <: MythrasActorDataModel] = actor.getState
     }), "Sheet Data")
   }
 
