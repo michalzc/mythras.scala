@@ -23,6 +23,18 @@ object Const extends js.Object:
     val spell: LocKey       = itemLocKey("spell")
     val hitLocation: LocKey = itemLocKey("hitLocation")
 
+  object Sheets extends js.Object:
+    object Actor extends js.Object:
+      object CharacterSheet extends js.Object:
+        private val tabKey = (key: String) => LocKey(key, s"mythras.sheets.tabs.$key")
+        val tabs: js.Array[LocKey] = js.Array(
+          tabKey("character"),
+          tabKey("equipment"),
+          tabKey("combat"),
+          tabKey("magic"),
+          tabKey("notes"),
+        )
+
 
 class LocKey(val key: String, val localizationKey: String) extends js.Object
 

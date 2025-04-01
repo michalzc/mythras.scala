@@ -1,0 +1,42 @@
+.app.window-app.mythras.sheet.actor.character {
+  .window-content {
+
+    padding: 0;
+
+    .sheet-header {
+      background: url("../assets/ui/szarfa.webp") repeat-x;
+      min-height: 330px;
+
+      input {
+        color: @color-white;
+      }
+
+      input[type="text"].name {
+        font-family: "Cinzel Decorative", serif;
+        font-size: 48px;
+        height: unset;
+      }
+    }
+
+    nav.sheet-tabs {
+      border: 0;
+      margin: 0;
+      color: @color-almost-black;
+    }
+
+    .tabs {
+      .item {
+        font-family: 'Grenze', serif;
+        font-variant: small-caps;
+        font-size: 24px;
+        font-weight: 500;
+      }
+
+      a:hover,
+      [data-tab].active {
+        text-shadow: 0 0 5px @color-stormy-blue;
+      }
+    }
+  }
+}
+

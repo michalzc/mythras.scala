@@ -3,22 +3,19 @@
         <img src="{{actor.img}}" class="profile-img" data-edit="img" title="{{actor.name}}" height="128" width="128"
              alt="{{actor.name}}"/>
         <div class="header-fields flexcol">
-            <div class="character-name"><input type="text" value="{{actor.name}}" name="name"
+            <div class="character-name"><input class="name" type="text" value="{{actor.name}}" name="name"
                                                placeholder="{{ localize "mythras.labels.name" }}"/></div>
             <div>Character</div>
         </div>
     </header>
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="stats">{{ localize "mythras.tabs.stats" }}</a>
-
+        {{#each tabs}}
+            <a class="item" data-tab="{{key}}">{{ localize localizationKey }}</a>
+        {{/each}}
     </nav>
-
 
     <section class="sheet-body">
 
-        <div class="tab stats" data-group="primary" data-tab="stats">
-            {{> systems/mythras-scala/templates/parts/character-sheet/stats.hbs sheetData }}
-        </div>
 
 
     </section>

@@ -7,12 +7,18 @@ mythras:
     character: Character
     npc: NPC
 
+    tabs:
+      character: Character
+      equipment: Equipment
+      combat: Combat
+      magic: Magic
+      notes: Notes
+
   labels:
     name: Name
     description: Description
 
-  tabs:
-    stats: Attributes & Skills
+
 
 TYPES:
   Actor:
