@@ -23,7 +23,7 @@ class AttributesServiceSpec extends AnyFlatSpecLike with Matchers with TableDriv
       (37, 4),
     )
 
-    forAll(actionPointsTab)((value, expected) => AttributesService.calculateActionPoints(value) shouldEqual expected)
+    forAll(actionPointsTab)((value, expected) => AttributesService.calculateActionPoints(0, value) shouldEqual expected)
   }
 
   it should "calculate expierience modifier" in {
@@ -128,4 +128,19 @@ class AttributesServiceSpec extends AnyFlatSpecLike with Matchers with TableDriv
     )
 
     forAll(tab)((value, expected) => AttributesService.calculateMagicPoints(value) shouldEqual expected)
+  }
+
+  it should "calculate initiative bonus" in {
+    val tab = Table(
+      ("DEX", "INT", "IB"),
+      (0, 0, 0),
+      (1, 1, 1),
+      (2, 2, 2),
+      (1, 2, 2),
+      (2, 4, 3),
+    )
+
+    forAll(tab){ (dex, int, expected) =>
+      AttributesService.calculateInitiativeMod(int, dex) shouldEqual expected
+    }
   }

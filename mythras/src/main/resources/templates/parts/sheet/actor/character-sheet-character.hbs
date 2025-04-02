@@ -1,16 +1,19 @@
-<div class="character-sheet-left flexcol">
-    <div>
-        <div class="list-header">{{ localize "mythras.sheets.labels.characteristics" }}<i class="ci ci-edit"></i></div>
-    </div>
-    <div class="characteristics flexrow">
-        {{#each state.characteristics.elements}}
-        <div class="characteristic flexcol">
-            <input type="text" class="value" name="system.characteristics.{{key}}.base" value="{{ value }}">
-            <div class="label">{{ localize label }}</div>
+<div class="character">
+    <div class="character-sheet-left flexcol">
+        <div>
+            <div class="list-header">{{ localize "mythras.sheets.labels.characteristics" }}<i class="ci ci-edit"></i>
+            </div>
         </div>
-        {{/each}}
+        <div class="characteristics flexrow">
+            {{#each state.characteristics.elements}}
+                <div class="characteristic flexcol">
+                    <input type="text" class="value" name="system.characteristics.{{key}}.base" value="{{ value }}">
+                    <div class="label">{{ localize label }}</div>
+                </div>
+            {{/each}}
+        </div>
     </div>
-</div>
-<div class="character-sheet-right">
-    Tu bedom skile
+    <div class="character-sheet-right">
+        Tu bedom skile
+    </div>
 </div>

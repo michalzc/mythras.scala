@@ -4,11 +4,8 @@ import michalz.foundry.mythras.document.actor.data.CounterWithMod
 
 import scala.scalajs.js
 
-class Counter(source: CounterWithMod) extends js.Object:
-  def max: Int     = source.max + source.mod
-  def baseMax: Int = source.max
+class Counter(source: CounterWithMod, calculatedMax: Int) extends js.Object:
+  def max: Int     = calculatedMax + source.mod
+  def baseMax: Int = calculatedMax
   def current: Int = source.current
   def mod: Int     = source.mod
-
-object Counter:
-  def apply(source: CounterWithMod): Counter = new Counter(source)

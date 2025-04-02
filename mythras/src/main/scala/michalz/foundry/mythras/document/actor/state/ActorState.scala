@@ -17,5 +17,5 @@ class ActorState[DataModel <: MythrasActorDataModel](val actor: MythrasActor[Dat
   lazy val items: js.Array[Item[?]]                        = js.Array.from(actor.items).map(_.asInstanceOf[MythrasItem[?]])
   private lazy val itemMap: Map[String, js.Array[Item[?]]] = items.groupBy(_.`type`)
   lazy val itemsDict: Dictionary[js.Array[Item[?]]]        = itemMap.toJSDictionary
-  lazy val attributes: StateAttributes                     = StateAttributes(actor.system.attributes)
   lazy val characteristics: StateCharacteristics           = StateCharacteristics(actor.system.characteristics)
+  lazy val attributes: StateAttributes                     = StateAttributes(actor.system.attributes, characteristics)

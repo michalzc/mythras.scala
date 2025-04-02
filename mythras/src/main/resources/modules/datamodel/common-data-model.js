@@ -1,10 +1,11 @@
 const fields = foundry.data.fields;
 
-export function createFieldWithMod(required = false) {
-    const fieldOptions = {integer: true, min: 0, initial: 0, required: true}
+export function createFieldWithMod(required = false, initial = 0) {
+    const fieldOptions = {integer: true, min: 0, initial: initial, required: required}
+    const modOptions = {integer: true, min: 0, initial: 0, required: required}
     const schemaField = new fields.SchemaField({
         base: new fields.NumberField(fieldOptions),
-        mod: new fields.NumberField(fieldOptions)
+        mod: new fields.NumberField(modOptions)
     }, {required: required});
 
     Object.defineProperty(schemaField, 'value', {
@@ -19,9 +20,14 @@ export function createFieldWithMod(required = false) {
 export function createCounterWithMod(required = false) {
     const fieldOptions = {integer: true, min: 0, initial: 0, required: true}
     return new fields.SchemaField({
-        max: new fields.NumberField(fieldOptions),
         current: new fields.NumberField(fieldOptions),
         mod: new fields.NumberField(fieldOptions)
+    }, {required: required})
+}
+
+export function createAttributeWithMod(required = false) {
+    return new fields.SchemaField({
+        mod: new fields.NumberField({integer: true, min: 0, initial: 0, required: false})
     }, {required: required})
 }
 
@@ -40,17 +46,12 @@ export function createCharacteristics() {
 export function createAttributes() {
     return new fields.SchemaField({
         actionPoints: createCounterWithMod(true),
-        damageModifier: createFieldWithMod(true),
-        experienceModifier: createFieldWithMod(true),
-        healingRate: createFieldWithMod(true),
-        initiative: createFieldWithMod(true),
+        damageModifier: createAttributeWithMod(true),
+        experienceModifier: createAttributeWithMod(true),
+        healingRate: createAttributeWithMod(true),
+        initiative: createAttributeWithMod(true),
         luckPoints: createCounterWithMod(true),
-        movementRate: createFieldWithMod(true),
-        magicPoints: new fields.SchemaField({
-            max: new fields.NumberField({integer: true, initial: 0, required: true}),
-            current: new fields.NumberField({integer: true, initial: 0, required: true}),
-            mod: new fields.NumberField({integer: true, initial: 0, required: true}),
-            active: new fields.NumberField({integer: true, min: 0, initial: 0, required: true})
-        }, {required: true}),
+        movementRate: createFieldWithMod(true, 6),
+        magicPoints: createCounterWithMod(true),
     })
 }

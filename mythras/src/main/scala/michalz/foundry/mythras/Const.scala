@@ -5,6 +5,15 @@ import scala.scalajs.js
 object Const extends js.Object:
   val MODULE_NAME  = "mythras-scala"
   val MODULE_TITLE = "Mythras Scala"
+  
+  object CharacteristicsKeys extends js.Object:
+    val strength: String = "strength"
+    val constitution: String = "constitution"
+    val size: String = "size"
+    val dexterity: String = "dexterity"
+    val intelligence: String = "intelligence"
+    val power: String = "power"
+    val charisma: String = "charisma"
 
   private val actorLocKey = (key: String) => LocKey(key, s"TYPES.Actor.$key")
 

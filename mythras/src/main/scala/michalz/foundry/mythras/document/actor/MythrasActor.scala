@@ -16,9 +16,9 @@ class MythrasActor[DataModel <: MythrasActorDataModel](data: ActorData[DataModel
 
   private val internalState: js.UndefOr[StateHolder[? <: ActorState[? <: MythrasActorDataModel]]] = StateHolder(buildState())
 
-  def getState: js.UndefOr[ActorState[? <: MythrasActorDataModel]] = internalState.map(_.get)
+  def state: js.UndefOr[ActorState[? <: MythrasActorDataModel]] = internalState.map(_.get)
 
-  def buildState(): ActorState[? <: MythrasActorDataModel] = `type` match
+  private def buildState(): ActorState[? <: MythrasActorDataModel] = `type` match
     case Const.ActorTypes.character.key => CharacterState(this)
     case Const.ActorTypes.npc.key       => NPCState(this)
 

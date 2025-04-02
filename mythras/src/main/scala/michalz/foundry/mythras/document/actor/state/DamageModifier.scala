@@ -1,10 +1,10 @@
 package michalz.foundry.mythras.document.actor.state
 
-import michalz.foundry.mythras.document.actor.data.FieldWithMod
+import michalz.foundry.mythras.document.actor.data.AttributeWithMod
 import michalz.foundry.mythras.services.DamageModifierService
 
-class DamageModifier(source: FieldWithMod) extends Field(source):
-  val damageModValue: Int = source.mod
-  val damageMod: String   = DamageModifierService.modByStep(damageModValue)
+class DamageModifier(source: AttributeWithMod, strength: Int, size: Int)
+    extends Attribute(source, DamageModifierService.valueToStep(strength + size)):
+  val damageMod: String = DamageModifierService.modByStep(value)
 
 object DamageModifier

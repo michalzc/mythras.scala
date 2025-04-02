@@ -10,12 +10,6 @@ trait MythrasCharacterDataModel extends MythrasActorDataModel:
 
 object MythrasCharacterDataModel:
 
-  def apply(source: MythrasCharacterDataModel): MythrasCharacterDataModel = new MythrasCharacterDataModel:
-    override def cults: List[Cult]                = source.cults
-    override def characteristics: Characteristics = Characteristics(source.characteristics)
-    override def attributes: Attributes           = Attributes(source.attributes)
-    override def profile: Profile                 = source.profile
-
   trait Cult extends js.Object:
     def name: String
     def description: Option[String]

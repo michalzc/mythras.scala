@@ -20,7 +20,7 @@ class MythrasBaseSheet[DataModel <: MythrasActorDataModel](actor: MythrasActor[D
       mergeObject(
         context,
         new js.Object {
-          val state: js.UndefOr[ActorState[? <: MythrasActorDataModel]] = actor.getState
+          val state: js.UndefOr[ActorState[? <: MythrasActorDataModel]] = actor.state
         },
       ),
       "Sheet Data",

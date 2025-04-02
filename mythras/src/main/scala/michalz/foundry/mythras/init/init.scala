@@ -3,7 +3,7 @@ package michalz.foundry.mythras.init
 import foundry.client.Actors
 import foundry.client.GlobalFunctions.loadTemplates
 import foundry.client.apps.{ActorSheet, ActorSheetParams}
-import michalz.foundry.client.Config
+import michalz.foundry.client.{Config, Mythras}
 import michalz.foundry.client.MythrasAddons.registerDataModels
 import michalz.foundry.mythras.Const
 import michalz.foundry.mythras.application.{MythrasCharacterSheet, MythrasNPCSheet}
@@ -24,14 +24,12 @@ def preloadTemplates() = {
   loadTemplates(logObject(templates.map(path => s"$templatesBasePath/$path").toJSArray, "Preloading templates"))
 }
 
-def init(): Unit =
-  log("Initializing new way!")
-  preloadTemplates()
-  registerDataModels()
-
+def setupDocuments(): Unit = {
   Config.Actor.documentClass = js.constructorOf[MythrasActor[? <: MythrasActorDataModel]]
   Config.Item.documentClass = js.constructorOf[MythrasItem[? <: js.Object]]
+}
 
+def registerSheets(): Unit = {
   Actors.unregisterSheet("core", js.constructorOf[ActorSheet[?, ?]])
   Actors.registerSheet(
     "mythras",
@@ -43,4 +41,18 @@ def init(): Unit =
     js.constructorOf[MythrasNPCSheet],
     ActorSheetParams(label = "mythras.sheets.npc", types = js.Array("npc"), makeDefault = true),
   )
+}
+
+def updateConfig(): Unit = {
+  Config.Mythras.Actor = Mythras
+}
+
+def init(): Unit =
+  log("Initializing new way!")
+  preloadTemplates()
+  registerDataModels()
+
+  setupDocuments()
+  registerSheets()
+
   log("System initialized!")
