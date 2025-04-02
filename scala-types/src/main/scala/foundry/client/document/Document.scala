@@ -10,6 +10,6 @@ trait Document[DataModel <: js.Object] extends js.Object {
   val `type`: String             = js.native
   val id: String                 = js.native
   var name: String               = js.native
-  val system: DataModel         = js.native
+  val system: DataModel          = js.native
   val folder: js.UndefOr[String] = js.native
 }

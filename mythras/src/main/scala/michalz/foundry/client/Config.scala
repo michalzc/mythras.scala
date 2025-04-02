@@ -7,4 +7,4 @@ import scala.scalajs.js.annotation.JSGlobal
 
 @js.native
 @JSGlobal("CONFIG")
-object Config extends BaseConfig {}
+object Config extends BaseConfig

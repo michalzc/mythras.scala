@@ -33,7 +33,6 @@ class MythrasCharacterSheet(actor: MythrasActor[MythrasCharacterDataModel], opti
   private def showCharacterDialog(): Unit =
     log("Showing character dialog")
 
-
 object MythrasCharacterSheet:
   @JSExportStatic
   def name: String = "Character"
@@ -50,8 +49,8 @@ object MythrasCharacterSheet:
         },
       )
       override val classes: UndefOr[js.Array[String]] = js.Array("mythras", "sheet", "actor", "character")
-      override val width: Int = 1200
-      override val height: Int = 1200
+      override val width: Int                         = 1200
+      override val height: Int                        = 1200
     }
 
     mergeObject(defaultOptions, newOptions)

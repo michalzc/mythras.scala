@@ -13,10 +13,18 @@ mythras:
       combat: Combat
       magic: Magic
       notes: Notes
+    labels:
+      characteristics: Characteristics
 
   labels:
-    name: Name
-    description: Description
+    characteristics:
+      strength: Strength
+      constitution: Constitution
+      size: Size
+      dexterity: Dexterity
+      intelligence: Intelligence
+      power: Power
+      charisma: Charisma
 
 
 

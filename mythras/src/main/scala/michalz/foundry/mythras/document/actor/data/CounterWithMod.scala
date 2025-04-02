@@ -9,7 +9,7 @@ trait CounterWithMod extends js.Object:
 
 object CounterWithMod:
   def apply(source: CounterWithMod): CounterWithMod = new CounterWithMod:
-    override def max: Int = source.max
+    override def max: Int     = source.max
     override def current: Int = source.current
-    override def mod: Int = source.mod
-    def maxValue: Int = max + mod
+    override def mod: Int     = source.mod
+    def maxValue: Int         = max + mod

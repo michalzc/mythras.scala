@@ -16,24 +16,27 @@ class MythrasBaseSheet[DataModel <: MythrasActorDataModel](actor: MythrasActor[D
     extends ActorSheet[DataModel, MythrasActor[DataModel]](actor, options):
   override def getData(options: js.Object): DataType = {
     val context = super.getData(options)
-    utils.logObject(mergeObject(context, new js.Object{
-      val state: ActorState[? <: MythrasActorDataModel] = actor.getState
-    }), "Sheet Data")
+    utils.logObject(
+      mergeObject(
+        context,
+        new js.Object {
+          val state: js.UndefOr[ActorState[? <: MythrasActorDataModel]] = actor.getState
+        },
+      ),
+      "Sheet Data",
+    )
   }
-
 
 object MythrasBaseSheet {
   @JSExportStatic
   def name: String = "MythrasActorSheet"
 
-
-
   @JSExportStatic
   def defaultOptions: ActorSheetOptions = {
     val newOptions: ActorSheetOptions = new ActorSheetOptions {
       override val classes: js.Array[String] = List("mythras", "actor", "sheet").toJSArray
-      override val width   = 1024
-      override val height  = 768
+      override val width                     = 1024
+      override val height                    = 768
     }
     mergeObject(ActorSheet.defaultOptions, newOptions)
   }

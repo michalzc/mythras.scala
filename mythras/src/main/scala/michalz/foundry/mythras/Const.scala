@@ -10,7 +10,7 @@ object Const extends js.Object:
 
   object ActorTypes extends js.Object:
     val character: LocKey = actorLocKey("character")
-    val npc: LocKey = actorLocKey("npc")
+    val npc: LocKey       = actorLocKey("npc")
 
   private val itemLocKey = (key: String) => LocKey(key, s"TYPES.Item.$key")
 
@@ -35,6 +35,8 @@ object Const extends js.Object:
           tabKey("notes"),
         )
 
+  object Labels extends js.Object:
+    val characteristicPath: String = "mythras.labels.characteristics"
 
 class LocKey(val key: String, val localizationKey: String) extends js.Object
 

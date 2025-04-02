@@ -9,5 +9,5 @@ trait FieldWithMod extends js.Object:
 object FieldWithMod:
   def apply(source: FieldWithMod): FieldWithMod = new FieldWithMod:
     override def base: Int = source.base
-    override def mod: Int = source.mod
-    def value: Int = base + mod
+    override def mod: Int  = source.mod
+    def value: Int         = base + mod

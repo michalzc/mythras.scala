@@ -14,9 +14,9 @@ import scala.scalajs.js.annotation.{JSExportStatic, JSExportTopLevel}
 class MythrasActor[DataModel <: MythrasActorDataModel](data: ActorData[DataModel], context: js.Object)
     extends Actor[DataModel](data, context):
 
-  val internalState: StateHolder[? <: ActorState[? <: MythrasActorDataModel]] = StateHolder(buildState())
+  private val internalState: js.UndefOr[StateHolder[? <: ActorState[? <: MythrasActorDataModel]]] = StateHolder(buildState())
 
-  def getState: ActorState[? <: MythrasActorDataModel] = internalState.get
+  def getState: js.UndefOr[ActorState[? <: MythrasActorDataModel]] = internalState.map(_.get)
 
   def buildState(): ActorState[? <: MythrasActorDataModel] = `type` match
     case Const.ActorTypes.character.key => CharacterState(this)
@@ -26,6 +26,11 @@ class MythrasActor[DataModel <: MythrasActorDataModel](data: ActorData[DataModel
     log(s"Getting roll data for $name")
     val context = super.getRollData()
     context
+  }
+
+  override def prepareData(): Unit = {
+    super.prepareData()
+    internalState.foreach(_.invalidate())
   }
 
   log(s"Creating new actor ${data.name}", data)

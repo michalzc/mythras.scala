@@ -1,22 +1,49 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header flexrow">
-        <img src="{{actor.img}}" class="profile-img" data-edit="img" title="{{actor.name}}" height="128" width="128"
-             alt="{{actor.name}}"/>
-        <div class="header-fields flexcol">
+        <div class="flexcol sheet-header-left">
             <div class="character-name"><input class="name" type="text" value="{{actor.name}}" name="name"
                                                placeholder="{{ localize "mythras.labels.name" }}"/></div>
-            <div>Character</div>
+        </div>
+        <div class="flexrow sheet-header-right">
+            <div class="flexrow counters">
+                <div class="counter flexcol">
+                    <div class="counter-value">+1</div>
+                    <div class="counter-label">Exp. Mod.</div>
+                </div>
+            </div>
+            <img src="{{actor.img}}" class="profile-img" data-edit="img" title="{{actor.name}}" height="128" width="128"
+                 alt="{{actor.name}}"/>
         </div>
     </header>
     <nav class="sheet-tabs tabs" data-group="primary">
         {{#each tabs}}
             <a class="item" data-tab="{{key}}">{{ localize localizationKey }}</a>
+            {{#unless @last}}
+                <i class="item ti ti-point-filled"></i>
+            {{/unless}}
         {{/each}}
     </nav>
 
     <section class="sheet-body">
+        <div class="tab character" data-group="primary" data-tab="character">
+            {{> "systems/mythras-scala/templates/parts/sheet/actor/character-sheet-character.hbs" this}}
+        </div>
 
+        <div class="tab" data-group="primary" data-tab="equipment">
+            Equipment
+        </div>
 
+        <div class="tab" data-group="primary" data-tab="combat">
+            Combat
+        </div>
+
+        <div class="tab" data-group="primary" data-tab="magic">
+            Magic
+        </div>
+
+        <div class="tab" data-group="primary" data-tab="notes">
+            Notes
+        </div>
 
     </section>
 

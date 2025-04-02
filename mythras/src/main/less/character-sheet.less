@@ -5,9 +5,12 @@
 
     .sheet-header {
       background: url("../assets/ui/szarfa.webp") repeat-x;
-      min-height: 330px;
+      min-height: 310px;
+      align-items: flex-start;
+      padding-top: 50px;
 
-      input {
+      input[type="text"],
+      & {
         color: @color-white;
       }
 
@@ -15,26 +18,108 @@
         font-family: "Cinzel Decorative", serif;
         font-size: 48px;
         height: unset;
+        border: 0;
+
+        &:focus {
+          box-shadow: none;
+          border-bottom: 1px solid @color-white;
+        }
+      }
+
+      .sheet-header-left {
+        margin-left: 20px;
+      }
+
+      .sheet-header-right {
+        margin-right: 20px;
+
+        .counters {
+          align-items: flex-start;
+          line-height: 1;
+
+          .counter-value {
+            font-family: 'Cinzel', serif;
+            font-size: 64px;
+          }
+
+          .counter-label {
+            font-family: 'Grenze', serif;
+            font-variant: small-caps;
+            font-size: 16px;
+            font-weight: 500;
+          }
+        }
+
+        .profile-img {
+          width: 200px;
+          height: 200px;
+          border: 1px solid @color-white;
+        }
       }
     }
 
-    nav.sheet-tabs {
+    nav.sheet-tabs.tabs {
       border: 0;
-      margin: 0;
       color: @color-almost-black;
-    }
 
-    .tabs {
       .item {
         font-family: 'Grenze', serif;
         font-variant: small-caps;
-        font-size: 24px;
+        font-size: 30px;
         font-weight: 500;
       }
 
       a:hover,
       [data-tab].active {
         text-shadow: 0 0 5px @color-stormy-blue;
+      }
+
+      [data-tab] {
+        padding: 0;
+      }
+    }
+
+    .sheet-body {
+      .character {
+        display: flex;
+        flex-direction: row;
+
+        & > div {
+          flex: 1 1 0px;
+          margin: 15px;
+        }
+
+        .characteristics {
+
+          .characteristic {
+            flex: 1 1 0px;
+            width: 0;
+            align-items: center;
+
+            .value {
+              font-family: 'Cinzel', serif;
+              font-size: 36px;
+              font-weight: 500;
+              line-height: 1;
+              text-align: center;
+              border: 0;
+              background: none;
+
+              &:focus {
+                box-shadow: none;
+                border-bottom: 1px solid @color-dark-maroon;
+              }
+            }
+
+            .label {
+              font-family: 'Grenze', serif;
+              font-variant: small-caps;
+              font-weight: 700;
+              font-size: 24px;
+              transform: scaleX(0.7);
+            }
+          }
+        }
       }
     }
   }
