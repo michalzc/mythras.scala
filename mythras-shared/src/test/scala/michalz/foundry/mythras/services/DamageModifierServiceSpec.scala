@@ -1,4 +1,4 @@
-package michalz.foundry.mythras.utils
+package michalz.foundry.mythras.services
 
 import org.scalatest.flatspec.AnyFlatSpecLike
 import org.scalatest.matchers.should.Matchers
