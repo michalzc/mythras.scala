@@ -7,8 +7,36 @@
         <div class="flexrow sheet-header-right">
             <div class="flexrow counters">
                 <div class="counter flexcol">
-                    <div class="counter-value">+1</div>
-                    <div class="counter-label">Exp. Mod.</div>
+                    <div class="counter-value">{{ numberFormat state.attributes.experienceModifier.value
+                                                               sign=true }}</div>
+                    <div class="counter-label">{{ localize "mythras.labels.attributes.experienceMod" }}</div>
+                </div>
+                <div class="counter flexcol">
+                    <div class="counter-value">{{ state.attributes.healingRate.value }}</div>
+                    <div class="counter-label">{{ localize "mythras.labels.attributes.healingRage" }}</div>
+                </div>
+                <div class="counter flexcol">
+                    <div class="counter-with-max">
+                        <input class="counter-value" type="number" id="luckPoints" data-dtype="Number"
+                               name="system.attributes.luckPoints.current"
+                               value="{{ state.attributes.luckPoints.current }}">
+                        <div class="counter-value-max">/{{ state.attributes.luckPoints.max }}</div>
+                    </div>
+                    <label for="luckPoints" class="counter-label-left">{{ localize
+                            "mythras.labels.attributes.luck" }}</label>
+                </div>
+                <div class="counter flexcol">
+                    <div class="counter-with-max">
+                        <input class="counter-value" type="number" id="magicPoints" data-dtype="Number"
+                               name="system.attributes.magicPoints.current"
+                               value="{{ state.attributes.magicPoints.current }}">
+                        <div class="counter-value-max">/{{ state.attributes.magicPoints.max }}</div>
+                    </div>
+                    <label for="magicPoints" class="counter-label-left">{{ localize "mythras.labels.attributes.magicPoints" }}</label>
+                </div>
+                <div class="counter flexcol">
+                    <div class="counter-value">{{ state.attributes.experienceRolls }}</div>
+                    <div class="counter-label">{{ localize "mythras.labels.attributes.experienceRolls" }}</div>
                 </div>
             </div>
             <img src="{{actor.img}}" class="profile-img" data-edit="img" title="{{actor.name}}" height="128" width="128"

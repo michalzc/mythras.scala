@@ -14,7 +14,7 @@ function createCharacterProfile() {
     gender: new fields.StringField(),
     frame: new fields.StringField(),
     height: new fields.NumberField({integer: true, min: 0}),
-    weight: new fields.NumberField({integer: true, min: 0}),
+    weight: new fields.NumberField({integer: true, min: 0})
   }, {required: true})
 }
 

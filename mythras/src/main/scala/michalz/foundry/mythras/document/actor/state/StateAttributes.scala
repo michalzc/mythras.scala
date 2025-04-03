@@ -21,3 +21,4 @@ class StateAttributes(attributes: Attributes, characteristics: StateCharacterist
   lazy val luckPoints: Counter = Counter(attributes.luckPoints, AttributesService.calculateLuckPoints(power))
   lazy val magicPoints: Counter = Counter(attributes.magicPoints, AttributesService.calculateMagicPoints(power)) //FIXME: update with devoted
   lazy val movementRate: Field = Field(attributes.movementRate)
+  lazy val experienceRolls: Int = attributes.experienceRolls

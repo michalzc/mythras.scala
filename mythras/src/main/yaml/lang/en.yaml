@@ -25,6 +25,12 @@ mythras:
       intelligence: Intelligence
       power: Power
       charisma: Charisma
+    attributes:
+      experienceMod: Experience Modifier
+      healingRage: Healing Rate
+      luck: Luck
+      magicPoints: Magic Points
+      experienceRolls: Experience Rolls
 
 
 

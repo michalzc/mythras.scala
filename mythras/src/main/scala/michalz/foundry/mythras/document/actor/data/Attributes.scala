@@ -11,3 +11,4 @@ trait Attributes extends js.Object:
   def luckPoints: CounterWithMod
   def movementRate: FieldWithMod
   def magicPoints: CounterWithMod
+  def experienceRolls: Int

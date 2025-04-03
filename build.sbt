@@ -34,6 +34,7 @@ lazy val `mythras` = (project in file("mythras"))
       "org.typelevel" %%% "cats-core"     % "2.13.0",
     ),
     Test / test := {},
+    watchSources += WatchSource((Compile / sourceDirectory).value / "yaml")
   )
 
 lazy val `mythras-system` = (project in file("."))
