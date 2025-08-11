@@ -5,12 +5,17 @@ import foundry.client.document.Actor
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
+import scala.annotation.nowarn
 
 @js.native
 @JSGlobal
-class ActorSheet[SystemData <: js.Object, A <: Actor[SystemData]](actor: A, options: ApplicationOptions)
-    extends DocumentSheet[SystemData, A, ActorSheetData[SystemData, A]] {
-  type DataType = js.Promise[ActorSheetData[SystemData, A]] | ActorSheetData[SystemData, A]
+@nowarn
+class ActorSheet[SystemData <: js.Object, A <: Actor[SystemData]](
+    actor: A,
+    options: ApplicationOptions
+) extends DocumentSheet[SystemData, A, ActorSheetData[SystemData, A]] {
+  type DataType = js.Promise[ActorSheetData[SystemData, A]] |
+    ActorSheetData[SystemData, A]
   def template: String                      = js.native
   def getData(options: js.Object): DataType = js.native
 }

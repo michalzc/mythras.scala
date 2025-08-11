@@ -6,7 +6,10 @@ import foundry.client.apps.{ActorSheet, ActorSheetParams}
 import michalz.foundry.client.{Config, Mythras}
 import michalz.foundry.client.MythrasAddons.registerDataModels
 import michalz.foundry.mythras.Const
-import michalz.foundry.mythras.application.{MythrasCharacterSheet, MythrasNPCSheet}
+import michalz.foundry.mythras.application.{
+  MythrasCharacterSheet,
+  MythrasNPCSheet
+}
 import michalz.foundry.mythras.document.actor.MythrasActor
 import michalz.foundry.mythras.document.actor.data.MythrasActorDataModel
 import michalz.foundry.mythras.document.item.MythrasItem
@@ -17,15 +20,21 @@ import scala.scalajs.js.JSConverters.*
 
 def preloadTemplates() = {
   val templatesBasePath = s"systems/${Const.MODULE_NAME}/templates/parts"
-  val templates = List(
-    "sheet/actor/character-sheet-character.hbs",
+  val templates         = List(
+    "sheet/actor/character-sheet-character.hbs"
   )
 
-  loadTemplates(logObject(templates.map(path => s"$templatesBasePath/$path").toJSArray, "Preloading templates"))
+  loadTemplates(
+    logObject(
+      templates.map(path => s"$templatesBasePath/$path").toJSArray,
+      "Preloading templates"
+    )
+  )
 }
 
 def setupDocuments(): Unit = {
-  Config.Actor.documentClass = js.constructorOf[MythrasActor[? <: MythrasActorDataModel]]
+  Config.Actor.documentClass =
+    js.constructorOf[MythrasActor[? <: MythrasActorDataModel]]
   Config.Item.documentClass = js.constructorOf[MythrasItem[? <: js.Object]]
 }
 
@@ -34,12 +43,20 @@ def registerSheets(): Unit = {
   Actors.registerSheet(
     "mythras",
     js.constructorOf[MythrasCharacterSheet],
-    ActorSheetParams(label = "mythras.sheets.character", types = js.Array("character"), makeDefault = true), //
+    ActorSheetParams(
+      label = "mythras.sheets.character",
+      types = js.Array("character"),
+      makeDefault = true
+    ) //
   )
   Actors.registerSheet(
     "mythras",
     js.constructorOf[MythrasNPCSheet],
-    ActorSheetParams(label = "mythras.sheets.npc", types = js.Array("npc"), makeDefault = true),
+    ActorSheetParams(
+      label = "mythras.sheets.npc",
+      types = js.Array("npc"),
+      makeDefault = true
+    )
   )
 }
 

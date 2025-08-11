@@ -10,4 +10,3 @@ trait Characteristics extends js.Object:
   def intelligence: FieldWithMod
   def power: FieldWithMod
   def charisma: FieldWithMod
-

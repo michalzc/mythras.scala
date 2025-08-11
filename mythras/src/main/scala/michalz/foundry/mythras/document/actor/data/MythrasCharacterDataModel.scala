@@ -1,6 +1,9 @@
 package michalz.foundry.mythras.document.actor.data
 
-import michalz.foundry.mythras.document.actor.data.MythrasCharacterDataModel.{Cult, Profile}
+import michalz.foundry.mythras.document.actor.data.MythrasCharacterDataModel.{
+  Cult,
+  Profile
+}
 
 import scala.scalajs.js
 

@@ -5,15 +5,15 @@ import scala.scalajs.js
 object Const extends js.Object:
   val MODULE_NAME  = "mythras-scala"
   val MODULE_TITLE = "Mythras Scala"
-  
+
   object CharacteristicsKeys extends js.Object:
-    val strength: String = "strength"
+    val strength: String     = "strength"
     val constitution: String = "constitution"
-    val size: String = "size"
-    val dexterity: String = "dexterity"
+    val size: String         = "size"
+    val dexterity: String    = "dexterity"
     val intelligence: String = "intelligence"
-    val power: String = "power"
-    val charisma: String = "charisma"
+    val power: String        = "power"
+    val charisma: String     = "charisma"
 
   private val actorLocKey = (key: String) => LocKey(key, s"TYPES.Actor.$key")
 
@@ -35,13 +35,14 @@ object Const extends js.Object:
   object Sheets extends js.Object:
     object Actor extends js.Object:
       object CharacterSheet extends js.Object:
-        private val tabKey = (key: String) => LocKey(key, s"mythras.sheets.tabs.$key")
+        private val tabKey = (key: String) =>
+          LocKey(key, s"mythras.sheets.tabs.$key")
         val tabs: js.Array[LocKey] = js.Array(
           tabKey("character"),
           tabKey("equipment"),
           tabKey("combat"),
           tabKey("magic"),
-          tabKey("notes"),
+          tabKey("notes")
         )
 
   object Labels extends js.Object:
@@ -50,4 +51,5 @@ object Const extends js.Object:
 class LocKey(val key: String, val localizationKey: String) extends js.Object
 
 object LocKey:
-  def apply(key: String, localizationKey: String) = new LocKey(key, localizationKey)
+  def apply(key: String, localizationKey: String) =
+    new LocKey(key, localizationKey)

@@ -4,7 +4,7 @@ title: Mythras Scala
 description: Mythras Rules system for FoundryVTT!
 version: x.x.x
 compatibility:
-  minimum: 11
+  minimum: 12
   verified: 12
 authors:
   - name: Michał Z.

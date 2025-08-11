@@ -6,4 +6,5 @@ import scala.scalajs.js.annotation.JSGlobal
 @js.native
 @JSGlobal("foundry.utils")
 object FoundryUtils extends js.Object:
-  def mergeObject[L <: js.Object, R <: js.Object](original: L, other: R): L = js.native
+  def mergeObject[L <: js.Object, R <: js.Object](original: L, other: R): L =
+    js.native
