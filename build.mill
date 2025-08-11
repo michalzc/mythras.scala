@@ -1,0 +1,49 @@
+//| mill-version: 1.0.3
+
+package build
+import mill.* 
+import mill.scalalib.* 
+import mill.scalajslib.*
+import mill.api.Task.Simple
+
+trait MScalaJSModule extends ScalaJSModule, SbtModule {
+  def scalaVersion = "3.3.6"
+  def scalaJSVersion = "1.19.0"
+
+  def scalacOptions = Seq(
+    "-explain",
+    "-Wunused:all",
+  )
+}
+
+object `scala-types` extends MScalaJSModule {
+
+}
+
+object `mythras-shared` extends MScalaJSModule {
+  def mvnDeps = Seq(
+    mvn"org.typelevel::cats-core::2.13.0"
+  )
+
+  object test extends ScalaJSTests, TestModule.ScalaTest, SbtTests {
+    def mvnDeps = Seq(
+      mvn"org.scalatest::scalatest::3.2.19"
+    )
+
+  }
+}
+
+object mythras extends MScalaJSModule {
+  def moduleDeps = Seq(
+    `scala-types`,
+    `mythras-shared`
+  )
+
+  def mvnDeps = Seq(
+    mvn"org.scala-js::scalajs-dom::2.2.0"
+  )
+}
+
+object `foundry-package` extends Module {
+
+}
