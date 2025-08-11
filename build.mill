@@ -1,16 +1,20 @@
 //| mill-version: 1.0.3
 //| mvnDeps:
-//|   - "io.circe::circe-yaml-v12:0.16.1"
-//|   - "io.circe::circe-parser:0.14.14"
+//|   - io.circe::circe-yaml-v12:0.16.1
+//|   - io.circe::circe-parser:0.14.14
+//|   - com.github.sommeri:less4j:1.17.2
+//|   - com.lihaoyi::mill-contrib-versionfile:$MILL_VERSION
 
 package build
+import com.github.sommeri.less4j.core.ThreadUnsafeLessCompiler
 import mill.*
-import mill.scalalib.*
-import mill.scalajslib.*
 import mill.api.Task.Simple
-import mill.scalajslib.api.Report
-import mill.scalajslib.api.ModuleKind
-import cats.syntax.option.*
+import mill.scalajslib.*
+import mill.scalajslib.api.{ModuleKind, Report}
+import mill.scalalib.*
+
+import scala.jdk.CollectionConverters.*
+import mill.contrib.versionfile.VersionFileModule
 
 extension [E, A](self: Either[E, A]) {
   def orThrow = self match
@@ -30,6 +34,8 @@ trait MScalaJSModule extends ScalaJSModule, SbtModule {
   )
 }
 
+object `version-file` extends VersionFileModule
+
 object `scala-types` extends MScalaJSModule {}
 
 object `mythras-shared` extends MScalaJSModule {
@@ -44,6 +50,8 @@ object `mythras-shared` extends MScalaJSModule {
 
   }
 }
+
+
 
 object mythras extends MScalaJSModule {
   def moduleDeps = Seq(
@@ -60,36 +68,66 @@ object mythras extends MScalaJSModule {
 
 object `foundry-package` extends Module {
   import io.circe.yaml.v12.parser.parse
-  import io.circe.syntax.*
 
   def yamlSources = Task.Source("src/main/yaml")
   def resources   = Task.Source("src/main/resources")
   def jsSources   = Task.Source("src/main/js")
+  def lessSources = Task.Source("src/main/less")
 
   def buildDev = Task {
     val jsReport = mythras.fastLinkJS()
-    buildSystem(
+
+    val (cssProblems, files) = buildSystem(
       Task.dest,
       jsReport,
       jsSources().path,
+      lessSources().path,
       resources().path,
-      yamlSources().path
+      yamlSources().path,
+      `version-file`.currentVersion().toString
     )
+    cssProblems.foreach(problem => Task.log.warn(s"Less compiler: ${problem}"))
+
+    files
   }
+
+  def buildProd = Task {
+    val jsReport = mythras.fullLinkJS()
+
+    val (cssProblems, files) = buildSystem(
+      Task.dest,
+      jsReport,
+      jsSources().path,
+      lessSources().path,
+      resources().path,
+      yamlSources().path,
+      `version-file`.currentVersion().toString
+    )
+    cssProblems.foreach(problem => Task.log.warn(s"Less compiler: ${problem}"))
+
+    files
+  }
+
 
   def buildSystem(
       dest: os.Path,
       jsLinkReport: Report,
       jsSources: os.Path,
+      lessSources: os.Path,
       resourcePath: os.Path,
-      yamlSources: os.Path
+      yamlSources: os.Path,
+      version: String
   ) = {
     val resources   = copyFiles(dest, resourcePath)
-    val jsFiles     = copyFiles(dest / "module", jsSources)
+    val jsFiles     = copyFiles(dest / "modules", jsSources)
     val yamlFiles   = convertYamls(dest, yamlSources)
-    val moduleFiles = copyFiles(dest / "module", jsLinkReport.dest.path)
+    val moduleFiles = copyFiles(dest / "modules", jsLinkReport.dest.path)
+    val (cssProblems, compiledCssFiles) = compileLess(dest / "css", lessSources)
+    val systemJson = convertSystem(dest, yamlSources, version)
 
-    resources ++ jsFiles ++ yamlFiles ++ moduleFiles
+    
+
+    cssProblems -> (resources ++ jsFiles ++ yamlFiles ++ moduleFiles ++ compiledCssFiles :+ systemJson)
   }
 
   def copyFiles(dest: os.Path, source: os.Path) = os
@@ -105,7 +143,7 @@ object `foundry-package` extends Module {
     val yamlFiles = os
       .walk(source)
       .filter(p =>
-        p.toIO.isFile() && (p.ext.toLowerCase == "yaml" || p.ext.toLowerCase == "yml")
+        p.toIO.isFile() && ((p.ext.toLowerCase == "yaml" || p.ext.toLowerCase == "yml") && p.baseName != "system")
       )
       .map(p =>
         p -> (os.Path(p.toNIO.getParent) / s"${p.baseName}.json")
@@ -119,5 +157,29 @@ object `foundry-package` extends Module {
       os.write.over(outPath, json.spaces2, createFolders = true)
       PathRef(outPath)
     }
+  }
+
+  def compileLess(desc: os.Path, source: os.Path) = {
+    val compiler  = new ThreadUnsafeLessCompiler()
+    val inputFile = source / "mythras.less"
+    val result    = compiler.compile(inputFile.toIO)
+    val cssPath   = desc / "mythras.css"
+    os.write(cssPath, result.getCss)
+    val mapPath = desc / "mythras.css.map"
+    os.write(mapPath, result.getSourceMap)
+    result.getWarnings.asScala.map(_.getMessage) -> List(
+      PathRef(mapPath),
+      PathRef(mapPath)
+    )
+  }
+
+  def convertSystem(dest: os.Path, source: os.Path, version: String) = {
+    import io.circe.syntax.* 
+
+    val json = parse(os.read(source / "system.yaml")).orThrow
+    val modifiedJson = ("version" -> version.asJson) +: json.asObject.get
+    val destFile = dest / "system.json"
+    os.write(destFile, modifiedJson.asJson.spaces2)
+    PathRef(destFile)
   }
 }
