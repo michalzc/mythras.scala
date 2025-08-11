@@ -8,7 +8,7 @@ class ApplicationHeaderButton(
     @JSName("class")
     val `class`: String,
     val icon: String,
-    val onclick: js.UndefOr[js.Function0[Unit | js.Promise[Unit]]],
+    val onclick: js.UndefOr[js.Function0[Unit | js.Promise[Unit]]]
 ) extends js.Object
 
 object ApplicationHeaderButton:
@@ -16,6 +16,6 @@ object ApplicationHeaderButton:
       label: String,
       `class`: String,
       icon: String,
-      onclick: js.UndefOr[js.Function0[Unit | js.Promise[Unit]]] = js.undefined,
+      onclick: js.UndefOr[js.Function0[Unit | js.Promise[Unit]]] = js.undefined
   ): ApplicationHeaderButton =
     new ApplicationHeaderButton(label, `class`, icon, onclick)

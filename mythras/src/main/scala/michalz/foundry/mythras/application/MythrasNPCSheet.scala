@@ -11,11 +11,14 @@ import scala.scalajs.js
 import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSExportStatic
 
-class MythrasNPCSheet(actor: MythrasActor[MythrasNPCDataModel with js.Object], options: ApplicationOptions)
-    extends MythrasBaseSheet(actor, options):
+class MythrasNPCSheet(
+    actor: MythrasActor[MythrasNPCDataModel with js.Object],
+    options: ApplicationOptions
+) extends MythrasBaseSheet(actor, options):
 //  type SheetData = ActorSheetData[MythrasNPCData, MythrasActor[MythrasNPCData]]
 
-  override def template: String = "systems/mythras-scala/templates/npc-sheet.hbs"
+  override def template: String =
+    "systems/mythras-scala/templates/npc-sheet.hbs"
 
   override def getData(options: js.Object): DataType =
     val context = super.getData(options)
@@ -33,9 +36,10 @@ object MythrasNPCSheet:
 
   @JSExportStatic
   def defaultOptions: ActorSheetOptions =
-    val defaultOptions = MythrasBaseSheet.defaultOptions
+    val defaultOptions                = MythrasBaseSheet.defaultOptions
     val newOptions: ActorSheetOptions = new ActorSheetOptions {
-      override val classes: UndefOr[js.Array[String]] = js.Array("mythras", "sheet", "actor", "npc")
+      override val classes: UndefOr[js.Array[String]] =
+        js.Array("mythras", "sheet", "actor", "npc")
     }
 
     mergeObject(defaultOptions, newOptions)

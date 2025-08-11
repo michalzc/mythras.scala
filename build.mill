@@ -1,24 +1,36 @@
 //| mill-version: 1.0.3
+//| mvnDeps:
+//|   - "io.circe::circe-yaml-v12:0.16.1"
+//|   - "io.circe::circe-parser:0.14.14"
 
 package build
-import mill.* 
-import mill.scalalib.* 
+import mill.*
+import mill.scalalib.*
 import mill.scalajslib.*
 import mill.api.Task.Simple
+import mill.scalajslib.api.Report
+import mill.scalajslib.api.ModuleKind
+import cats.syntax.option.*
+
+extension [E, A](self: Either[E, A]) {
+  def orThrow = self match
+    case Right(result)       => result
+    case Left(ex: Throwable) => throw ex
+    case Left(other)         => throw new Exception(other.toString)
+
+}
 
 trait MScalaJSModule extends ScalaJSModule, SbtModule {
-  def scalaVersion = "3.3.6"
+  def scalaVersion   = "3.3.6"
   def scalaJSVersion = "1.19.0"
 
   def scalacOptions = Seq(
     "-explain",
-    "-Wunused:all",
+    "-Wunused:all"
   )
 }
 
-object `scala-types` extends MScalaJSModule {
-
-}
+object `scala-types` extends MScalaJSModule {}
 
 object `mythras-shared` extends MScalaJSModule {
   def mvnDeps = Seq(
@@ -39,11 +51,73 @@ object mythras extends MScalaJSModule {
     `mythras-shared`
   )
 
+  override def moduleKind = ModuleKind.ESModule
+
   def mvnDeps = Seq(
     mvn"org.scala-js::scalajs-dom::2.2.0"
   )
 }
 
 object `foundry-package` extends Module {
+  import io.circe.yaml.v12.parser.parse
+  import io.circe.syntax.*
 
+  def yamlSources = Task.Source("src/main/yaml")
+  def resources   = Task.Source("src/main/resources")
+  def jsSources   = Task.Source("src/main/js")
+
+  def buildDev = Task {
+    val jsReport = mythras.fastLinkJS()
+    buildSystem(
+      Task.dest,
+      jsReport,
+      jsSources().path,
+      resources().path,
+      yamlSources().path
+    )
+  }
+
+  def buildSystem(
+      dest: os.Path,
+      jsLinkReport: Report,
+      jsSources: os.Path,
+      resourcePath: os.Path,
+      yamlSources: os.Path
+  ) = {
+    val resources   = copyFiles(dest, resourcePath)
+    val jsFiles     = copyFiles(dest / "module", jsSources)
+    val yamlFiles   = convertYamls(dest, yamlSources)
+    val moduleFiles = copyFiles(dest / "module", jsLinkReport.dest.path)
+
+    resources ++ jsFiles ++ yamlFiles ++ moduleFiles
+  }
+
+  def copyFiles(dest: os.Path, source: os.Path) = os
+    .walk(source)
+    .filter(_.toIO.isFile)
+    .map(p => p -> dest / p.relativeTo(source))
+    .map { (sourceFile, destFile) =>
+      os.copy.over(sourceFile, destFile, createFolders = true)
+      PathRef(destFile)
+    }
+
+  def convertYamls(dest: os.Path, source: os.Path) = {
+    val yamlFiles = os
+      .walk(source)
+      .filter(p =>
+        p.toIO.isFile() && (p.ext.toLowerCase == "yaml" || p.ext.toLowerCase == "yml")
+      )
+      .map(p =>
+        p -> (os.Path(p.toNIO.getParent) / s"${p.baseName}.json")
+          .relativeTo(source)
+      )
+
+    yamlFiles.map { (file, relativeFile) =>
+      val cnt     = os.read(file)
+      val json    = parse(cnt).orThrow
+      val outPath = dest / relativeFile
+      os.write.over(outPath, json.spaces2, createFolders = true)
+      PathRef(outPath)
+    }
+  }
 }
