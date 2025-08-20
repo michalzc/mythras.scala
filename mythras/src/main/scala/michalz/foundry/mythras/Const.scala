@@ -35,8 +35,7 @@ object Const extends js.Object:
   object Sheets extends js.Object:
     object Actor extends js.Object:
       object CharacterSheet extends js.Object:
-        private val tabKey = (key: String) =>
-          LocKey(key, s"mythras.sheets.tabs.$key")
+        private val tabKey         = (key: String) => LocKey(key, s"mythras.sheets.tabs.$key")
         val tabs: js.Array[LocKey] = js.Array(
           tabKey("character"),
           tabKey("equipment"),

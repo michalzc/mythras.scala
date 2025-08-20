@@ -4,6 +4,7 @@
 //|   - io.circe::circe-parser:0.14.14
 //|   - com.github.sommeri:less4j:1.17.2
 //|   - com.lihaoyi::mill-contrib-versionfile:$MILL_VERSION
+//|   - com.goyeau::mill-scalafix::0.6.0
 
 package build
 import com.github.sommeri.less4j.core.ThreadUnsafeLessCompiler
@@ -12,7 +13,7 @@ import mill.api.Task.Simple
 import mill.scalajslib.*
 import mill.scalajslib.api.{ModuleKind, Report}
 import mill.scalalib.*
-
+import com.goyeau.mill.scalafix.ScalafixModule
 import scala.jdk.CollectionConverters.*
 import mill.contrib.versionfile.VersionFileModule
 
@@ -24,7 +25,9 @@ extension [E, A](self: Either[E, A]) {
 
 }
 
-trait MScalaJSModule extends ScalaJSModule, SbtModule {
+def fixAll = mill.scalalib.scalafmt.ScalafmtModule
+
+trait MScalaJSModule extends ScalaJSModule, SbtModule, ScalafixModule {
   def scalaVersion   = "3.3.6"
   def scalaJSVersion = "1.19.0"
 
@@ -50,8 +53,6 @@ object `mythras-shared` extends MScalaJSModule {
 
   }
 }
-
-
 
 object mythras extends MScalaJSModule {
   def moduleDeps = Seq(
@@ -108,7 +109,6 @@ object `foundry-package` extends Module {
     files
   }
 
-
   def buildSystem(
       dest: os.Path,
       jsLinkReport: Report,
@@ -118,14 +118,12 @@ object `foundry-package` extends Module {
       yamlSources: os.Path,
       version: String
   ) = {
-    val resources   = copyFiles(dest, resourcePath)
-    val jsFiles     = copyFiles(dest / "modules", jsSources)
-    val yamlFiles   = convertYamls(dest, yamlSources)
-    val moduleFiles = copyFiles(dest / "modules", jsLinkReport.dest.path)
+    val resources                       = copyFiles(dest, resourcePath)
+    val jsFiles                         = copyFiles(dest / "modules", jsSources)
+    val yamlFiles                       = convertYamls(dest, yamlSources)
+    val moduleFiles                     = copyFiles(dest / "modules", jsLinkReport.dest.path)
     val (cssProblems, compiledCssFiles) = compileLess(dest / "css", lessSources)
-    val systemJson = convertSystem(dest, yamlSources, version)
-
-    
+    val systemJson                      = convertSystem(dest, yamlSources, version)
 
     cssProblems -> (resources ++ jsFiles ++ yamlFiles ++ moduleFiles ++ compiledCssFiles :+ systemJson)
   }
@@ -174,11 +172,11 @@ object `foundry-package` extends Module {
   }
 
   def convertSystem(dest: os.Path, source: os.Path, version: String) = {
-    import io.circe.syntax.* 
+    import io.circe.syntax.*
 
-    val json = parse(os.read(source / "system.yaml")).orThrow
+    val json         = parse(os.read(source / "system.yaml")).orThrow
     val modifiedJson = ("version" -> version.asJson) +: json.asObject.get
-    val destFile = dest / "system.json"
+    val destFile     = dest / "system.json"
     os.write(destFile, modifiedJson.asJson.spaces2)
     PathRef(destFile)
   }

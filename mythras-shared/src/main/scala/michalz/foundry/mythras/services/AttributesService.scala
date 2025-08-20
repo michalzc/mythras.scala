@@ -17,8 +17,8 @@ trait AttributesService:
       location: BodyLocation
   ): Int =
     location.calculate(con + siz)
-  def calculateLuckPoints(pow: Int): Int  = LuckPointsBase.calculate(pow)
-  def calculateMagicPoints(pow: Int): Int = MagicPointsBase.calculate(pow)
+  def calculateLuckPoints(pow: Int): Int              = LuckPointsBase.calculate(pow)
+  def calculateMagicPoints(pow: Int): Int             = MagicPointsBase.calculate(pow)
   def calculateInitiativeMod(int: Int, dex: Int): Int =
     scala.math.round((int + dex) / 2.0).toInt
 

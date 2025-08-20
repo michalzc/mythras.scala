@@ -1,6 +1,7 @@
 package foundry.client.apps.data
 
 import foundry.client.document.Document
+
 import scala.scalajs.js
 
 @js.native
