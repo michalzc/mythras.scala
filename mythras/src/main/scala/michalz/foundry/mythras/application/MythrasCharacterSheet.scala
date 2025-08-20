@@ -1,18 +1,20 @@
 package michalz.foundry.mythras.application
 
 import foundry.client.FoundryUtils.mergeObject
+import foundry.client.apps.ActorSheetOptions
+import foundry.client.apps.TabDef
 import foundry.client.apps.data.ApplicationOptions
 import foundry.client.apps.utils.ApplicationHeaderButton
-import foundry.client.apps.{ActorSheetOptions, TabDef}
-import michalz.foundry.mythras.{Const, LocKey}
+import michalz.foundry.mythras.Const
+import michalz.foundry.mythras.LocKey
 import michalz.foundry.mythras.document.actor.MythrasActor
 import michalz.foundry.mythras.document.actor.data.MythrasCharacterDataModel
 import michalz.foundry.mythras.utils.log
 
 import scala.scalajs.js
+import scala.scalajs.js.JSConverters._
 import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSExportStatic
-import scala.scalajs.js.JSConverters.*
 
 class MythrasCharacterSheet(
     actor: MythrasActor[MythrasCharacterDataModel],

@@ -8,7 +8,7 @@ import michalz.foundry.mythras.document.state.MythrasDocumentState
 
 import scala.scalajs.js
 import scala.scalajs.js.Dictionary
-import scala.scalajs.js.JSConverters.*
+import scala.scalajs.js.JSConverters._
 
 class ActorState[DataModel <: MythrasActorDataModel](
     val actor: MythrasActor[DataModel]

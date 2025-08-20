@@ -1,6 +1,7 @@
 package michalz.foundry.mythras.document.item
 
-import foundry.client.document.{Item, ItemData}
+import foundry.client.document.Item
+import foundry.client.document.ItemData
 
 import scala.scalajs.js
 

@@ -4,10 +4,7 @@ import org.scalatest.flatspec.AnyFlatSpecLike
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
 
-class AttributesServiceSpec
-    extends AnyFlatSpecLike
-    with Matchers
-    with TableDrivenPropertyChecks:
+class AttributesServiceSpec extends AnyFlatSpecLike with Matchers with TableDrivenPropertyChecks:
 
   behavior of "AttributesService"
 
@@ -26,9 +23,7 @@ class AttributesServiceSpec
       (37, 4)
     )
 
-    forAll(actionPointsTab)((value, expected) =>
-      AttributesService.calculateActionPoints(0, value) shouldEqual expected
-    )
+    forAll(actionPointsTab)((value, expected) => AttributesService.calculateActionPoints(0, value) shouldEqual expected)
   }
 
   it should "calculate expierience modifier" in {
@@ -45,9 +40,7 @@ class AttributesServiceSpec
       (19, 2)
     )
 
-    forAll(tab)((value, expected) =>
-      AttributesService.calculateExperienceMod(value) shouldEqual expected
-    )
+    forAll(tab)((value, expected) => AttributesService.calculateExperienceMod(value) shouldEqual expected)
   }
 
   it should "calculate healing rate" in {
@@ -64,9 +57,7 @@ class AttributesServiceSpec
       (19, 4)
     )
 
-    forAll(tab)((value, expected) =>
-      AttributesService.calculateHealingRate(value) shouldEqual expected
-    )
+    forAll(tab)((value, expected) => AttributesService.calculateHealingRate(value) shouldEqual expected)
   }
 
   it should "calculate hit points for Humanoids" in {
@@ -110,9 +101,7 @@ class AttributesServiceSpec
       (46, HumanoidBodyLocation.Head, 10)
     )
 
-    forAll(tab)((conSize, location, exptected) =>
-      location.calculate(conSize) shouldEqual exptected
-    )
+    forAll(tab)((conSize, location, exptected) => location.calculate(conSize) shouldEqual exptected)
   }
 
   it should "calculate luck points" in {
@@ -126,9 +115,7 @@ class AttributesServiceSpec
       (19, 4)
     )
 
-    forAll(tab)((value, expected) =>
-      AttributesService.calculateLuckPoints(value) shouldEqual expected
-    )
+    forAll(tab)((value, expected) => AttributesService.calculateLuckPoints(value) shouldEqual expected)
   }
 
   it should "calculate magic points" in {
@@ -140,9 +127,7 @@ class AttributesServiceSpec
       (10, 10)
     )
 
-    forAll(tab)((value, expected) =>
-      AttributesService.calculateMagicPoints(value) shouldEqual expected
-    )
+    forAll(tab)((value, expected) => AttributesService.calculateMagicPoints(value) shouldEqual expected)
   }
 
   it should "calculate initiative bonus" in {
@@ -155,7 +140,5 @@ class AttributesServiceSpec
       (2, 4, 3)
     )
 
-    forAll(tab)((dex, int, expected) =>
-      AttributesService.calculateInitiativeMod(int, dex) shouldEqual expected
-    )
+    forAll(tab)((dex, int, expected) => AttributesService.calculateInitiativeMod(int, dex) shouldEqual expected)
   }

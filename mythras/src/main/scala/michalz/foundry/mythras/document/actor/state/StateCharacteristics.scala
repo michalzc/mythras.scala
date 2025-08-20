@@ -4,7 +4,7 @@ import michalz.foundry.mythras.Const
 import michalz.foundry.mythras.document.actor.data.Characteristics
 
 import scala.scalajs.js
-import scala.scalajs.js.JSConverters.*
+import scala.scalajs.js.JSConverters._
 
 class StateCharacteristics(val source: Characteristics) extends js.Object:
   lazy val strength: FieldWithLabel =

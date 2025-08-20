@@ -1,15 +1,16 @@
 package michalz.foundry.mythras.application
 
 import foundry.client.FoundryUtils.mergeObject
+import foundry.client.apps.ActorSheet
+import foundry.client.apps.ActorSheetOptions
 import foundry.client.apps.data.ApplicationOptions
-import foundry.client.apps.{ActorSheet, ActorSheetOptions}
 import michalz.foundry.mythras.document.actor.MythrasActor
 import michalz.foundry.mythras.document.actor.data.MythrasActorDataModel
 import michalz.foundry.mythras.document.actor.state.ActorState
 import michalz.foundry.mythras.utils
 
 import scala.scalajs.js
-import scala.scalajs.js.JSConverters.*
+import scala.scalajs.js.JSConverters._
 import scala.scalajs.js.annotation.JSExportStatic
 
 class MythrasBaseSheet[DataModel <: MythrasActorDataModel](

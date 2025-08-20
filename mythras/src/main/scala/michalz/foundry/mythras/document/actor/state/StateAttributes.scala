@@ -5,7 +5,6 @@ import michalz.foundry.mythras.document.actor.state.FieldWithLabel.fieldToInt
 import michalz.foundry.mythras.services.AttributesService
 
 import scala.language.implicitConversions
-
 import scala.scalajs.js
 
 class StateAttributes(

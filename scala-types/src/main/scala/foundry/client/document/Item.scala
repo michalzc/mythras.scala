@@ -1,8 +1,8 @@
 package foundry.client.document
 
+import scala.annotation.nowarn
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
-import scala.annotation.nowarn
 
 @js.native
 @JSGlobal

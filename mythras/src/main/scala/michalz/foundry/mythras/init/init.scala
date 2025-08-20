@@ -2,21 +2,22 @@ package michalz.foundry.mythras.init
 
 import foundry.client.Actors
 import foundry.client.GlobalFunctions.loadTemplates
-import foundry.client.apps.{ActorSheet, ActorSheetParams}
-import michalz.foundry.client.{Config, Mythras}
+import foundry.client.apps.ActorSheet
+import foundry.client.apps.ActorSheetParams
+import michalz.foundry.client.Config
+import michalz.foundry.client.Mythras
 import michalz.foundry.client.MythrasAddons.registerDataModels
 import michalz.foundry.mythras.Const
-import michalz.foundry.mythras.application.{
-  MythrasCharacterSheet,
-  MythrasNPCSheet
-}
+import michalz.foundry.mythras.application.MythrasCharacterSheet
+import michalz.foundry.mythras.application.MythrasNPCSheet
 import michalz.foundry.mythras.document.actor.MythrasActor
 import michalz.foundry.mythras.document.actor.data.MythrasActorDataModel
 import michalz.foundry.mythras.document.item.MythrasItem
-import michalz.foundry.mythras.utils.{log, logObject}
+import michalz.foundry.mythras.utils.log
+import michalz.foundry.mythras.utils.logObject
 
 import scala.scalajs.js
-import scala.scalajs.js.JSConverters.*
+import scala.scalajs.js.JSConverters._
 
 def preloadTemplates() = {
   val templatesBasePath = s"systems/${Const.MODULE_NAME}/templates/parts"
@@ -33,8 +34,7 @@ def preloadTemplates() = {
 }
 
 def setupDocuments(): Unit = {
-  Config.Actor.documentClass =
-    js.constructorOf[MythrasActor[? <: MythrasActorDataModel]]
+  Config.Actor.documentClass = js.constructorOf[MythrasActor[? <: MythrasActorDataModel]]
   Config.Item.documentClass = js.constructorOf[MythrasItem[? <: js.Object]]
 }
 
