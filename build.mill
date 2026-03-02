@@ -25,7 +25,7 @@ extension [E, A](self: Either[E, A]) {
 
 }
 
-def fixAll = mill.scalalib.scalafmt.ScalafmtModule
+def formatAll = mill.scalalib.scalafmt.ScalafmtModule
 
 trait MScalaJSModule extends ScalaJSModule, SbtModule, ScalafixModule {
   def scalaVersion   = "3.3.6"
@@ -88,8 +88,10 @@ object `foundry-package` extends Module {
       `version-file`.currentVersion().toString
     )
     cssProblems.foreach(problem => Task.log.warn(s"Less compiler: ${problem}"))
+    val lockFile = Task.dest / "mythras-scala.lock"
+    os.write(lockFile, "🔒")
 
-    files
+    PathRef(lockFile) +: files
   }
 
   def buildProd = Task {
