@@ -53,6 +53,6 @@ export function createAttributes() {
         luckPoints: createCounterWithMod(true),
         movementRate: createFieldWithMod(true, 6),
         magicPoints: createCounterWithMod(true),
-        experienceRolls: new fields.NumberField({integer: true, min: 0}),
+        experienceRolls: new fields.NumberField({integer: true, min: 0, initial: 0}),
     })
 }

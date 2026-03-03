@@ -18,12 +18,11 @@ import scala.scalajs.js.annotation.JSExportTopLevel
 class MythrasActor[DataModel <: MythrasActorDataModel](
     data: ActorData[DataModel],
     context: js.Object
-) extends Actor[DataModel](data, context):
+) extends Actor[DataModel](data, context) {
 
-  private val internalState: js.UndefOr[StateHolder[? <: ActorState[? <: MythrasActorDataModel]]] =
-    StateHolder(
-      buildState()
-    )
+  private val internalState: js.UndefOr[StateHolder[? <: ActorState[? <: MythrasActorDataModel]]] = StateHolder(
+    buildState()
+  )
 
   def state: js.UndefOr[ActorState[? <: MythrasActorDataModel]] =
     internalState.map(_.get)
@@ -45,6 +44,7 @@ class MythrasActor[DataModel <: MythrasActorDataModel](
   }
 
   log(s"Creating new actor ${data.name}", data)
+}
 
 object MythrasActor {
 
