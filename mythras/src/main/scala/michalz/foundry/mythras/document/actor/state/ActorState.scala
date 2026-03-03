@@ -1,14 +1,15 @@
 package michalz.foundry.mythras.document.actor.state
 
+import scala.scalajs.js
+import scala.scalajs.js.Dictionary
+import scala.scalajs.js.JSConverters.*
+
 import foundry.client.document.Item
+
 import michalz.foundry.mythras.document.actor.MythrasActor
 import michalz.foundry.mythras.document.actor.data.MythrasActorDataModel
 import michalz.foundry.mythras.document.item.MythrasItem
 import michalz.foundry.mythras.document.state.MythrasDocumentState
-
-import scala.scalajs.js
-import scala.scalajs.js.Dictionary
-import scala.scalajs.js.JSConverters._
 
 class ActorState[DataModel <: MythrasActorDataModel](
     val actor: MythrasActor[DataModel]

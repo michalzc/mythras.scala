@@ -1,9 +1,9 @@
 package foundry.client.apps.data
 
+import scala.scalajs.js
+
 import foundry.client.document.Actor
 import foundry.client.document.ActorData
-
-import scala.scalajs.js
 
 @js.native
 trait ActorSheetData[SystemData <: js.Object, A <: Actor[SystemData]] extends SheetData[SystemData, A]:

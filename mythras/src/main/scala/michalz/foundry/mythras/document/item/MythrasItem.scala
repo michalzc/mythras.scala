@@ -1,9 +1,9 @@
 package michalz.foundry.mythras.document.item
 
+import scala.scalajs.js
+
 import foundry.client.document.Item
 import foundry.client.document.ItemData
-
-import scala.scalajs.js
 
 class MythrasItem[DataModel <: js.Object](
     data: ItemData[DataModel],

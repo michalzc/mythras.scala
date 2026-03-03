@@ -1,9 +1,9 @@
 package foundry.client
 
-import foundry.client.apps.ActorSheetParams
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
+
+import foundry.client.apps.ActorSheetParams
 
 @js.native
 @JSGlobal

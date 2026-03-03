@@ -1,15 +1,16 @@
 package michalz.foundry.mythras.application
 
-import foundry.client.FoundryUtils.mergeObject
-import foundry.client.apps.ActorSheetOptions
-import foundry.client.apps.data.ApplicationOptions
-import michalz.foundry.mythras.document.actor.MythrasActor
-import michalz.foundry.mythras.document.actor.data.MythrasNPCDataModel
-import michalz.foundry.mythras.utils.log
-
 import scala.scalajs.js
 import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSExportStatic
+
+import foundry.client.FoundryUtils.mergeObject
+import foundry.client.apps.ActorSheetOptions
+import foundry.client.apps.data.ApplicationOptions
+
+import michalz.foundry.mythras.document.actor.MythrasActor
+import michalz.foundry.mythras.document.actor.data.MythrasNPCDataModel
+import michalz.foundry.mythras.utils.log
 
 class MythrasNPCSheet(
     actor: MythrasActor[MythrasNPCDataModel & js.Object],

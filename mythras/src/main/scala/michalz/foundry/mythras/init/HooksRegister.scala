@@ -1,12 +1,12 @@
 package michalz.foundry.mythras.init
-import foundry.client.Hooks
-
 import scala.scalajs.js
+
+import foundry.client.Hooks
 
 object HooksRegister:
 
   def registerAll(): Unit =
-    runInit()
+    registerInit()
 
-  private def runInit(): Unit =
+  private def registerInit(): Unit =
     Hooks.once("init", js.Any.fromFunction0(init))

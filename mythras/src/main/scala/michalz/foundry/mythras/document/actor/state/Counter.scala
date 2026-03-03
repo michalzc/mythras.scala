@@ -1,8 +1,8 @@
 package michalz.foundry.mythras.document.actor.state
 
-import michalz.foundry.mythras.document.actor.data.CounterWithMod
-
 import scala.scalajs.js
+
+import michalz.foundry.mythras.document.actor.data.CounterWithMod
 
 class Counter(source: CounterWithMod, calculatedMax: Int) extends js.Object:
   def max: Int     = calculatedMax + source.mod

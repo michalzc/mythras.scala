@@ -1,9 +1,9 @@
 package foundry.client.apps
 
+import scala.scalajs.js
+
 import foundry.client.apps.data.SheetData
 import foundry.client.document.Document
-
-import scala.scalajs.js
 
 @js.native
 trait DocumentSheet[SystemData <: js.Object, D <: Document[

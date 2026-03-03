@@ -1,8 +1,8 @@
 package michalz.foundry.mythras
 
-import org.scalajs.dom
-
 import scala.scalajs.js
+
+import org.scalajs.dom
 
 package object utils {
   inline def log(message: String, params: Any*): js.Any =

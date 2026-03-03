@@ -1,7 +1,12 @@
 package michalz.foundry.mythras.document.actor
 
+import scala.scalajs.js
+import scala.scalajs.js.annotation.JSExportStatic
+import scala.scalajs.js.annotation.JSExportTopLevel
+
 import foundry.client.document.Actor
 import foundry.client.document.ActorData
+
 import michalz.foundry.mythras.Const
 import michalz.foundry.mythras.document.actor.data.MythrasActorDataModel
 import michalz.foundry.mythras.document.actor.state.ActorState
@@ -9,10 +14,6 @@ import michalz.foundry.mythras.document.actor.state.CharacterState
 import michalz.foundry.mythras.document.actor.state.NPCState
 import michalz.foundry.mythras.document.state.StateHolder
 import michalz.foundry.mythras.utils.log
-
-import scala.scalajs.js
-import scala.scalajs.js.annotation.JSExportStatic
-import scala.scalajs.js.annotation.JSExportTopLevel
 
 @JSExportTopLevel("MythrasActor")
 class MythrasActor[DataModel <: MythrasActorDataModel](

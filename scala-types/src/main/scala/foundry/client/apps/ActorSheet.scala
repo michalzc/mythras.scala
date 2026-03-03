@@ -1,12 +1,12 @@
 package foundry.client.apps
 
-import foundry.client.apps.data.ActorSheetData
-import foundry.client.apps.data.ApplicationOptions
-import foundry.client.document.Actor
-
 import scala.annotation.nowarn
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
+
+import foundry.client.apps.data.ActorSheetData
+import foundry.client.apps.data.ApplicationOptions
+import foundry.client.document.Actor
 
 @js.native
 @JSGlobal
