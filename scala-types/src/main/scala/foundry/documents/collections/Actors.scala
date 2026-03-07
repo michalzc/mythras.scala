@@ -1,4 +1,4 @@
-package foundry.client
+package foundry.documents.collections
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -6,7 +6,7 @@ import scala.scalajs.js.annotation.JSGlobal
 import foundry.client.apps.ActorSheetParams
 
 @js.native
-@JSGlobal
+@JSGlobal("foundry.documents.collections.Actors")
 object Actors extends js.Object {
   def registerSheet(
       module: String,

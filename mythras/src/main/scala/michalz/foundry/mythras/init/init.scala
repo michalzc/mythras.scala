@@ -4,9 +4,9 @@ import scala.scalajs.js
 import scala.scalajs.js.JSConverters.*
 
 import foundry.applications.HandlebarsFunctions
-import foundry.client.Actors
 import foundry.client.apps.ActorSheet
 import foundry.client.apps.ActorSheetParams
+import foundry.documents.collections.Actors
 
 import michalz.foundry.client.Config
 import michalz.foundry.client.Mythras
