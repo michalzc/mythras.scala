@@ -1,7 +1,7 @@
 package michalz.foundry.mythras.services
 
-/** Service for calculating damage modifiers based on character attributes. The
-  * damage modifier is represented as dice notation (e.g., "+1d6", "-1d4").
+/** Service for calculating damage modifiers based on character attributes. The damage modifier is represented as dice
+  * notation (e.g., "+1d6", "-1d4").
   */
 trait DamageModifierService:
   /** Smaller dice types used in damage calculations */
@@ -43,7 +43,7 @@ trait DamageModifierService:
   def valueToStep(value: Int): Int = value match
     case v if v <= LowValueThreshold => 0
     case v if v <= MidValueThreshold => (v - 1) / LowStepDivisor
-    case v => (v - 1) / HighStepDivisor + HighStepOffset
+    case v                           => (v - 1) / HighStepDivisor + HighStepOffset
 
   /** Get damage modifier string based on attribute value.
     *

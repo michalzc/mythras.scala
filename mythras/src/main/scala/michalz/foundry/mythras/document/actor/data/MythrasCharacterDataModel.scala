@@ -1,11 +1,9 @@
 package michalz.foundry.mythras.document.actor.data
 
-import michalz.foundry.mythras.document.actor.data.MythrasCharacterDataModel.{
-  Cult,
-  Profile
-}
-
 import scala.scalajs.js
+
+import michalz.foundry.mythras.document.actor.data.MythrasCharacterDataModel.Cult
+import michalz.foundry.mythras.document.actor.data.MythrasCharacterDataModel.Profile
 
 trait MythrasCharacterDataModel extends MythrasActorDataModel:
   def cults: List[Cult]

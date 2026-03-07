@@ -1,16 +1,17 @@
 package michalz.foundry.mythras.application
 
-import foundry.client.FoundryUtils.mergeObject
-import foundry.client.apps.data.ApplicationOptions
-import foundry.client.apps.{ActorSheet, ActorSheetOptions}
-import michalz.foundry.mythras.document.actor.MythrasActor
-import michalz.foundry.mythras.document.actor.data.MythrasActorDataModel
-import michalz.foundry.mythras.document.actor.state.ActorState
-import michalz.foundry.mythras.utils
-
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters.*
 import scala.scalajs.js.annotation.JSExportStatic
+
+import foundry.client.FoundryUtils.mergeObject
+import foundry.client.apps.ActorSheet
+import foundry.client.apps.ActorSheetOptions
+import foundry.client.apps.data.ApplicationOptions
+
+import michalz.foundry.mythras.document.actor.MythrasActor
+import michalz.foundry.mythras.document.actor.data.MythrasActorDataModel
+import michalz.foundry.mythras.utils
 
 class MythrasBaseSheet[DataModel <: MythrasActorDataModel](
     actor: MythrasActor[DataModel],
@@ -22,8 +23,7 @@ class MythrasBaseSheet[DataModel <: MythrasActorDataModel](
       mergeObject(
         context,
         new js.Object {
-          val state: js.UndefOr[ActorState[? <: MythrasActorDataModel]] =
-            actor.state
+          actor.state
         }
       ),
       "Sheet Data"

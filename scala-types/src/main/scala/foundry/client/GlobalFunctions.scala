@@ -5,7 +5,7 @@ import scala.scalajs.js.annotation.JSGlobalScope
 
 @js.native
 @JSGlobalScope
-object GlobalFunctions extends js.Object {
+object GlobalFunctions extends js.Any {
   def mergeObject[L <: js.Object, R <: js.Object](original: L, other: R): L =
     js.native
 
@@ -13,3 +13,4 @@ object GlobalFunctions extends js.Object {
 
   val game: Game = js.native
 }
+

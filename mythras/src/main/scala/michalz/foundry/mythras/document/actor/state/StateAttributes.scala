@@ -1,17 +1,16 @@
 package michalz.foundry.mythras.document.actor.state
 
+import scala.language.implicitConversions
+import scala.scalajs.js
+
 import michalz.foundry.mythras.document.actor.data.Attributes
 import michalz.foundry.mythras.document.actor.state.FieldWithLabel.fieldToInt
 import michalz.foundry.mythras.services.AttributesService
 
-import scala.language.implicitConversions
-
-import scala.scalajs.js
-
 class StateAttributes(
     attributes: Attributes,
     characteristics: StateCharacteristics
-) extends js.Object:
+) extends js.Object {
   import characteristics.*
   lazy val actionPoints: Counter = Counter(
     attributes.actionPoints,
@@ -43,3 +42,4 @@ class StateAttributes(
     ) // FIXME: update with devoted
   lazy val movementRate: Field  = Field(attributes.movementRate)
   lazy val experienceRolls: Int = attributes.experienceRolls
+}

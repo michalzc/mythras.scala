@@ -1,10 +1,11 @@
 package michalz.foundry.client
 
-import foundry.client.config.BaseConfig
-import michalz.foundry.mythras.document.actor.MythrasActor
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
+
+import foundry.client.config.BaseConfig
+
+import michalz.foundry.mythras.document.actor.MythrasActor
 
 @js.native
 @JSGlobal("CONFIG")

@@ -1,13 +1,10 @@
 package michalz.foundry.mythras.document.actor.state
 
 import michalz.foundry.mythras.document.actor.MythrasActor
-import michalz.foundry.mythras.document.actor.data.{
-  MythrasActorDataModel,
-  MythrasCharacterDataModel
-}
+import michalz.foundry.mythras.document.actor.data.MythrasActorDataModel
+import michalz.foundry.mythras.document.actor.data.MythrasCharacterDataModel
 
-class CharacterState(actor: MythrasActor[MythrasCharacterDataModel])
-    extends ActorState(actor)
+class CharacterState(actor: MythrasActor[MythrasCharacterDataModel]) extends ActorState(actor)
 
 object CharacterState:
   def apply[DataModel <: MythrasActorDataModel](

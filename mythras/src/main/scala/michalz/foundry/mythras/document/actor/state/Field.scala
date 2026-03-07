@@ -1,8 +1,8 @@
 package michalz.foundry.mythras.document.actor.state
 
-import michalz.foundry.mythras.document.actor.data.FieldWithMod
-
 import scala.scalajs.js
+
+import michalz.foundry.mythras.document.actor.data.FieldWithMod
 
 class Field(source: FieldWithMod) extends js.Object:
   lazy val value: Int = source.base + source.mod

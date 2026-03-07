@@ -1,7 +1,8 @@
 package foundry.client.apps.data
 
-import foundry.client.document.Document
 import scala.scalajs.js
+
+import foundry.client.document.Document
 
 @js.native
 trait SheetData[SD <: js.Object, D <: Document[SD]] extends js.Object:

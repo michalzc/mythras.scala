@@ -1,8 +1,8 @@
 package michalz.foundry.mythras.document.state
 
-import foundry.client.document.Document
-
 import scala.scalajs.js
+
+import foundry.client.document.Document
 
 class MythrasDocumentState[DataModel <: js.Object, Doc <: Document[DataModel]](
     val document: Doc

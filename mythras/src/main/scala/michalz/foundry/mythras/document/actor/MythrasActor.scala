@@ -1,30 +1,29 @@
 package michalz.foundry.mythras.document.actor
 
-import foundry.client.document.{Actor, ActorData}
+import scala.scalajs.js
+import scala.scalajs.js.annotation.JSExportStatic
+import scala.scalajs.js.annotation.JSExportTopLevel
+
+import foundry.client.document.Actor
+import foundry.client.document.ActorData
+
 import michalz.foundry.mythras.Const
 import michalz.foundry.mythras.document.actor.data.MythrasActorDataModel
-import michalz.foundry.mythras.document.actor.state.{
-  ActorState,
-  CharacterState,
-  NPCState
-}
+import michalz.foundry.mythras.document.actor.state.ActorState
+import michalz.foundry.mythras.document.actor.state.CharacterState
+import michalz.foundry.mythras.document.actor.state.NPCState
 import michalz.foundry.mythras.document.state.StateHolder
 import michalz.foundry.mythras.utils.log
-
-import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSExportStatic, JSExportTopLevel}
 
 @JSExportTopLevel("MythrasActor")
 class MythrasActor[DataModel <: MythrasActorDataModel](
     data: ActorData[DataModel],
     context: js.Object
-) extends Actor[DataModel](data, context):
+) extends Actor[DataModel](data, context) {
 
-  private val internalState
-      : js.UndefOr[StateHolder[? <: ActorState[? <: MythrasActorDataModel]]] =
-    StateHolder(
-      buildState()
-    )
+  private val internalState: js.UndefOr[StateHolder[? <: ActorState[? <: MythrasActorDataModel]]] = StateHolder(
+    buildState()
+  )
 
   def state: js.UndefOr[ActorState[? <: MythrasActorDataModel]] =
     internalState.map(_.get)
@@ -46,6 +45,7 @@ class MythrasActor[DataModel <: MythrasActorDataModel](
   }
 
   log(s"Creating new actor ${data.name}", data)
+}
 
 object MythrasActor {
 

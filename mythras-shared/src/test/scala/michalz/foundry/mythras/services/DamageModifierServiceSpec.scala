@@ -4,10 +4,7 @@ import org.scalatest.flatspec.AnyFlatSpecLike
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
 
-class DamageModifierServiceSpec
-    extends AnyFlatSpecLike
-    with Matchers
-    with TableDrivenPropertyChecks {
+class DamageModifierServiceSpec extends AnyFlatSpecLike with Matchers with TableDrivenPropertyChecks {
 
   val dmData = Table(
     ("step", "value", "dmmod"),
